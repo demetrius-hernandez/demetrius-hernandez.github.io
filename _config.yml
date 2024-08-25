@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Demetrius Hernandez / Site Title"
+title                    : "Demetrius Hernandez"
 title_separator          : "-"
 name                     : &name "Demetrius Hernandez"
 description              : &description "personal description"
@@ -21,14 +21,14 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  avatar           : "HERNANDEZ D EM SZ.jpg"
+  name             : "Demetrius Hernandez Sidebar name"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "Location: ND"
+  employer         : "University of Notre Dame"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "dhernan7@nd.edu"
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
