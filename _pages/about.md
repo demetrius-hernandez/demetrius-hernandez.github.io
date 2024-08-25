@@ -7,4 +7,6 @@ redirect_from:
   - /about.html
 ---
 
-I am a first-year PhD student at the University of Notre Dame, focusing on autonomous drones for emergency response scenarios. I am an NSF CSGrad4US Fellow and a Phase 3 DoD SMART Scholar, working under the guidance of Dr. Jane Cleland-Huang.
+I am a first-year PhD student at the University of Notre Dame in the Computer Science and Engineering department. 
+
+I am a National Science Foundation (NSF) Computer and Information Science and Engineering Graduate Research Fellow (CSGrad4US) and a Department of Defense (DoD) Science, Mathematics, and Research for Transformation (SMART) Scholar. Under the guidance of Dr. Jane Cleland-Huang, my research is focused on autonomous drones for emergency response scenarios.
