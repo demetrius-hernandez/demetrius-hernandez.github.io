@@ -21,12 +21,12 @@ repository               : #"academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "HDemetrius WSMR Headshot.png"
+  avatar           : "Demetrius WSMR Headshot.png"
   name             : "Demetrius Hernandez new name"
   pronouns         : # example: "she/her"  
   bio              : "Demetrius is a first-year PhD student working on autonomous drones for emergency response scenarios"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "South Bend, IN"
+  employer         : "The University of Notre Dame"
   uri              : # URL
   email            : "none@example.org" 
 
