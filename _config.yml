@@ -24,7 +24,7 @@ author:
   avatar           : "Demetrius WSMR Headshot.png"
   name             : "Demetrius Hernandez"
   pronouns         : # example: "she/her"  
-  bio              : "Demetrius is a first-year PhD student working on autonomous drones for emergency response scenarios"
+  bio              : "First-year PhD student"
   location         : "South Bend, IN"
   employer         : "The University of Notre Dame"
   uri              : # URL
@@ -129,7 +129,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : #&twitter
 facebook:
   username               :
   app_id                 :
