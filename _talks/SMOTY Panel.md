@@ -8,4 +8,6 @@ date: 2024-07-17
 location: "Washington, D.C."
 ---
 
-This is a description of your conference proceedings talk, note the different field in type. You can put anything in this field.
+[TODO Add link to panel vimeo](http://example2.com)
+
+Invited to speak on a panel before an audience of over 500 attendees from across the country, offering advice and insights as an early-career civilian employee

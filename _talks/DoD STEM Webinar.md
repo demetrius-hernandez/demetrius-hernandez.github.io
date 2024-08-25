@@ -8,6 +8,6 @@ date: 2024-08-20
 location: "Online"
 ---
 
-[More information here](http://example2.com)
+[TODO Add link to webinar](http://example2.com)
 
-This is a description of your talk, which is a markdown files that can be all markdown-ified like any other post. Yay markdown!
+Deliver a brief ~10-minute presentation highlighting my work as a civilian employee, focusing on the technical challenges I encountered and the solutions implemented. The presentation will also emphasize the critical role of collaboration and mentorship in achieving success.
