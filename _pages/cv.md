@@ -9,4 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
+[Open my CV](../files/Demetrius_CV.pdf){: .btn }
+
 <object data="../files/Demetrius_CV.pdf" width="1000" height="1000" type='application/pdf'></object>
