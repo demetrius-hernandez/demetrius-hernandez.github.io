@@ -1,7 +1,7 @@
 ---
 title: "DoD Innovators Spotlight Series"
-collection: Invited Panel
-type: "Talk"
+collection: talks
+type: "Invited Panel"
 permalink: /talks/DoD STEM Webinar
 venue: "DoD STEM Webinar"
 date: 2024-08-20
