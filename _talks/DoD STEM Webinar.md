@@ -1,6 +1,6 @@
 ---
 title: "DoD Innovators Spotlight Series"
-collection: talks
+collection: Invited Panel
 type: "Talk"
 permalink: /talks/DoD STEM Webinar
 venue: "DoD STEM Webinar"
