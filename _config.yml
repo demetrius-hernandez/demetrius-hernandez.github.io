@@ -24,9 +24,9 @@ author:
   avatar           : "Demetrius WSMR Headshot.png"
   name             : "Demetrius Hernandez"
   pronouns         : # example: "she/her"  
-  bio              : "First-year PhD student at The University of Notre Dame"
+  bio              : "PhD student at The University of Notre Dame"
   location         : "South Bend, IN"
-  employer         : "The University of Notre Dame"
+  employer         : #"The University of Notre Dame"
   uri              : # URL
   email            : #"none@example.org" 
 
