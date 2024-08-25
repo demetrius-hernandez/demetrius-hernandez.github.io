@@ -1,7 +1,7 @@
 ---
 title: "Graph Theoretic Approaches for Evaluating Counter Drone Systems"
 collection: publications
-category: #conferences
+category: conferences
 permalink: /publication/2023 NATO Paper
 excerpt: #'Graph theory to evaluate counter drone systems'
 date: 2023-10-30

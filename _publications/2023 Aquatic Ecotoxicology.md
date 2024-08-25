@@ -1,7 +1,7 @@
 ---
 title: "Aquatic Ecotoxicology: Theoretical Explanation of Empirical Formulas"
 collection: publications
-category: #books
+category: books
 permalink: /publication/2023 Aquatic Ecotoxicology
 excerpt: #'This paper is about the number 3. The number 4 is left for future work.'
 date: 2023-09-19
