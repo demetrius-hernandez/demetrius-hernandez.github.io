@@ -1,11 +1,11 @@
 ---
-title: "Talk 2 on Relevant Topic in Your Field"
+title: "DoD Innovators Spotlight Series"
 collection: talks
 type: "Talk"
-permalink: /talks/2014-02-01-talk-2
-venue: "London School of Testing"
-date: 2014-02-01
-location: "London, UK"
+permalink: /talks/DoD STEM Webinar
+venue: "DoD STEM Webinar"
+date: 2024-08-20
+location: "Online"
 ---
 
 [More information here](http://example2.com)
