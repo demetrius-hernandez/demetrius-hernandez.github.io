@@ -8,6 +8,6 @@ date: 2024-07-17
 location: "Washington, D.C."
 ---
 
-[TODO Add link to panel vimeo](http://example2.com)
+[Link to Panel Recording](https://vimeo.com/993013829/07b6d50ba8?share=copy)
 
 Invited to speak on a panel before an audience of over 500 attendees from across the country, offering advice and insights as an early-career civilian employee
