@@ -1,7 +1,7 @@
 ---
 title: "DoD Civilian Careers and Professional Development Panel"
 collection: talks
-type: "Invited Panel"
+type: #"Invited Panel"
 permalink: /talks/SMOTY Panel
 venue: "2024 SMART Scholarship Awardee Orientation and Awards Ceremony"
 date: 2024-07-17
