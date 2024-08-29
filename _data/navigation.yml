@@ -14,11 +14,15 @@ main:
   - title: "Talks"
     url: /talks/
 
+  - title: "Media"
+    url: /media/
+
   - title: "Blog Posts"
     url: /year-archive/
 
   - title: "Teaching"
     url: /teaching/
+
     
   - title: "Portfolio"
     url: /portfolio/
