@@ -14,9 +14,6 @@ main:
   - title: "Talks"
     url: /talks/
 
-  - title: "Media"
-    url: /media/
-
   - title: "Blog Posts"
     url: /year-archive/
 
@@ -27,5 +24,5 @@ main:
   - title: "Portfolio"
     url: /portfolio/
 
-  # - title: "Guide"
-  #   url: /markdown/
+  - title: "Guide"
+    url: /markdown/
