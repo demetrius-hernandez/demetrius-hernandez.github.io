@@ -8,7 +8,11 @@ author_profile: true
 *Published in: NATO Operations Research and Analysis Conference, 2023*  
 *Authors: **D. Hernandez***
 
-[![Slides](https://img.shields.io/badge/Slides-Link-blue)](../files/NATO Presentation.pdf)
+<a href="../files/NATO Presentation.pdf">
+  <img src="https://img.shields.io/badge/Slides-Link-blue" style="transform: scale(1.1);">
+</a>
+
+<!-- [![Slides](https://img.shields.io/badge/Slides-Link-blue)](../files/NATO Presentation.pdf) -->
 
 ---
 
@@ -16,6 +20,10 @@ author_profile: true
 *Published in: Uncertainty, Constraints, and Decision Making. Studies in Systems, Decision and Control, vol 484., 2023*  
 *Authors: **D. Hernandez**, G. Molina Holguin, F. Parra, V. Sanchez, V. Kreinovich*
 
-[![Paper](https://img.shields.io/badge/Paper-Link-blue)](https://link.springer.com/chapter/10.1007/978-3-031-36394-8_3)  
+<a href="https://link.springer.com/chapter/10.1007/978-3-031-36394-8_3">
+  <img src="https://img.shields.io/badge/Paper-Link-blue" style="transform: scale(1.1);">
+</a>
+
+<!-- [![Paper](https://img.shields.io/badge/Paper-Link-blue)](https://link.springer.com/chapter/10.1007/978-3-031-36394-8_3)   -->
 
 ---
