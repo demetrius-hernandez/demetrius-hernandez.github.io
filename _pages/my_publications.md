@@ -4,32 +4,20 @@ title: "Publications"
 author_profile: true
 ---
 
-# Research Publications
-
-Welcome to my research publications page! Below, you'll find a list of my latest work. Feel free to explore each one by clicking the buttons provided.
-
----
-
 ## 📚 Recent Publications
 
-### 1. **Title of Your First Paper**
-*Published in: Journal Name, Year*  
-*Co-authors: A. Author, B. Author, C. Author*
+### 1. **Graph Theoretic Approaches for Evaluating Counter Drone Systems**
+*Published in: NATO Operations Research and Analysis Conference, 2023*  
+*Authors: **D. Hernandez***
 
-> **Abstract**: Brief description of your paper. Summarize the key points and findings.
-
-[![Slides](https://img.shields.io/badge/PDF-Download-blue)](https://link-to-your-paper.pdf)  
-[![DOI](https://img.shields.io/badge/DOI-Link-orange)](https://doi.org/your-doi-link)
+[![Slides](https://img.shields.io/badge/Slides-Link-blue)](../files/NATO Presentation.pdf)
 
 ---
 
-### 2. **Title of Your Second Paper**
-*Published in: Conference Name, Year*  
+### 2. **Aquatic Ecotoxicology: Theoretical Explanation of Empirical Formulas**
+*Published in: Uncertainty, Constraints, and Decision Making. Studies in Systems, Decision and Control, vol 484., 2023*  
 *Co-authors: D. Author, E. Author*
 
-> **Abstract**: Brief description of your paper. Summarize the key points and findings.
-
-[![PDF](https://img.shields.io/badge/PDF-Download-blue)](https://link-to-your-paper.pdf)  
-[![DOI](https://img.shields.io/badge/DOI-Link-orange)](https://doi.org/your-doi-link)
+[![Paper](https://img.shields.io/badge/Paper-Link-blue)](https://link.springer.com/chapter/10.1007/978-3-031-36394-8_3)  
 
 ---
