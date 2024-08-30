@@ -29,8 +29,6 @@ Invited to speak on a panel before an audience of over 500 attendees from across
 
 ---
 
-
-
 # 📰 Media & Websites
 
 ---
