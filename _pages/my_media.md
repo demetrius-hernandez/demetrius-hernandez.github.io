@@ -10,7 +10,7 @@ Here are some panel discussions and features where I've discussed my work:
 
 ---
 
-### **"Department of Defense Innovators Spotlight Series"**  
+### **Department of Defense Innovators Spotlight Series**  
 *skip to 38:20 to see my presentation*
 
 > **Summary**: Delivered a brief ~15-minute presentation highlighting my work as a civilian employee. The presentation will also emphasize the critical role of collaboration and mentorship in achieving success.
@@ -19,7 +19,7 @@ Here are some panel discussions and features where I've discussed my work:
 
 ---
 
-### **"Department of Defense Civilian Careers and Professional Development Panel"**  
+### **Department of Defense Civilian Careers and Professional Development Panel**  
 
 > **Summary**: Invited to speak on a panel before an audience of over 500 attendees from across the country, offering advice and insights as an early-career civilian employee.
 
@@ -36,14 +36,12 @@ Here are some of the articles and websites that have featured my work:
 ---
 
 ### **[A White Sands Missile Range Employee is Awarded a DoD STEM Grant](https://www.army.mil/article/270467/a_white_sands_missile_range_employee_is_awarded_a_dod_stem_grant)**  
-
-> **Summary**: I was awarded a grant to collaborate with New Mexico State University on custom drone development for counter-drone testing at White Sands Missile Range.
+I was awarded a grant to collaborate with New Mexico State University on custom drone development for counter-drone testing at White Sands Missile Range.
 
 ---
 
 ### **[Empowering Innovation: Advancing Department of Defense Counter-Drone Technologies and STEM Education](https://www.dvidshub.net/news/470419/empowering-innovation-smart-scholar-and-mentor-pair-advance-department-defense-counter-drone-technologies-and-stem-education)**  
-
-> **Summary**: Received a Commander's Coin for Excellence from the Commander of White Sands Test Center for outstanding work at White Sands Missile Range.
+Received a Commander's Coin for Excellence from the Commander of White Sands Test Center for outstanding work at White Sands Missile Range.
 
 ---
 
