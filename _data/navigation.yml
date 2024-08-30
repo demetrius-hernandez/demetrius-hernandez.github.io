@@ -29,3 +29,6 @@ main:
 
   - title: "Media"
     url: /media/
+
+  - title: "Talks"
+    url: /my_talks/
