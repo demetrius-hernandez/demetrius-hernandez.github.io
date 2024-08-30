@@ -10,14 +10,20 @@ Here are some panel discussions and features where I've discussed my work:
 
 ---
 
-### **[Department of Defense Innovators Spotlight Series](https://www.youtube.com/watch?v=Bh-kM5tN-r8)**  
+### **Department of Defense Innovators Spotlight Series**  
 *skip to 38:20 to see my presentation*
+
 Delivered a brief ~15-minute presentation highlighting my work as a civilian employee. The presentation will also emphasize the critical role of collaboration and mentorship in achieving success.
+
+[![Watch Video](https://img.shields.io/badge/Watch%20Video-Link-red)](https://www.youtube.com/watch?v=Bh-kM5tN-r8)
 
 ---
 
-### **[Department of Defense Civilian Careers and Professional Development Panel](https://vimeo.com/993013829/07b6d50ba8?share=copy)**  
+### **[Department of Defense Civilian Careers and Professional Development Panel](https://vimeo.com/993013829/07b6d50ba8?share=copy)**
+
 Invited to speak on a panel before an audience of over 500 attendees from across the country, offering advice and insights as an early-career civilian employee.
+
+[![Watch Video](https://img.shields.io/badge/Watch%20Video-Link-red)](https://vimeo.com/993013829/07b6d50ba8?share=copy)
 
 ---
 
