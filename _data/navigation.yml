@@ -12,8 +12,11 @@ main:
   - title: "CV"
     url: /cv/
 
-  - title: "Media"
+  - title: "Speaking Engagements"
     url: /my_media/
+
+  - title: "Press & Highlights"
+    url: /my_highlights/
 
   # - title: "Publications"
   #   url: /publications/

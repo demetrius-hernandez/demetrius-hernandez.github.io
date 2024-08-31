@@ -28,7 +28,7 @@ author:
   location         : "South Bend, IN"
   employer         : #"The University of Notre Dame"
   uri              : # URL
-  email            : #"none@example.org" 
+  email            : "dhernan7@nd.edu"
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
@@ -57,7 +57,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : demetrius-hernandez
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username

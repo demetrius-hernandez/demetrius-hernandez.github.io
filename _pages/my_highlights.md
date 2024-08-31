@@ -1,6 +1,6 @@
 ---
 permalink: /my_media/
-title: "Speaking Engagements"
+title: "Media"
 author_profile: true
 ---
 
