@@ -12,11 +12,11 @@ main:
   - title: "CV"
     url: /cv/
 
-  - title: "Speaking Engagements"
+  - title: "Talks & Media"
     url: /my_media/
 
-  - title: "Press & Highlights"
-    url: /my_highlights/
+  # - title: "Press & Highlights"
+  #   url: /my_highlights/
 
   # - title: "Publications"
   #   url: /publications/
