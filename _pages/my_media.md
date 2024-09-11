@@ -34,7 +34,10 @@ But be sure to watch the whole discussion, as my fellow panelists shared incredi
 
 ## **Department of Defense Innovators Spotlight Series**  
 
-Delivered a brief ~15-minute presentation highlighting my work as a civilian employee. The presentation will also emphasize the critical role of collaboration and mentorship in achieving success. Skip to 38:20 if you are short on time to see my presentation. 
+Delivered a brief ~15-minute presentation highlighting my work as a civilian employee. The presentation will also emphasize the critical role of collaboration and mentorship in achieving success.
+
+- Skip to 38:20 if you are short on time to see my presentation. 
+
 Please watch the entire webinar, as my fellow participants highlight their incredible work!
 
 
