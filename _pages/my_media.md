@@ -22,7 +22,6 @@ Invited to speak on a panel before an audience of over 500 attendees from across
 - 38:35 - Networking advice
 - 44:47 - Benefits of mentor/mentee relationships
 - 48:36 - Thoughts and advice for early career professionals
-- 50:00 - Open Q&A
 
 But be sure to watch the whole discussion, as my fellow panelists shared incredible insights!
 
