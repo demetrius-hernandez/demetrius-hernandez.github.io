@@ -4,6 +4,10 @@ title: "Talks"
 author_profile: true
 ---
 
+## [2025 Shaheen 3MT® Finals presentation](https://www.youtube.com/watch?v=zwD4nxcIHKQ)
+
+Delivering my 3MT (Three Minute Thesis) talk, I distilled my research into a concise, engaging presentation aimed at making complex ideas accessible to a broad audience.
+
 ## [DoD Innovators Spotlight Series](https://www.youtube.com/watch?v=Bh-kM5tN-r8)
 *skip to 38:20 to see my presentation*
 
