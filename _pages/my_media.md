@@ -12,9 +12,15 @@ Scroll down to explore my recent talks and media features. Showcasing key moment
 
 ---
 
-## [2025 Shaheen 3MT® Finals presentation](https://www.youtube.com/watch?v=zwD4nxcIHKQ)
+## **2025 Shaheen 3MT® Finals presentation**
 
 Delivering my 3MT (Three Minute Thesis) talk, I distilled my research into a concise, engaging presentation aimed at making complex ideas accessible to a broad audience.
+
+<a href="https://www.youtube.com/watch?v=zwD4nxcIHKQ">
+  <img src="https://img.shields.io/badge/Watch%20Video-Link-red" style="transform: scale(1.1);">
+</a>
+
+---
 
 ## **Department of Defense Civilian Careers and Professional Development Panel**
 
