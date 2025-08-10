@@ -7,6 +7,41 @@ author_profile: true
 ---
 
 ## **Navigating the Black Box: Operational Lenses for AI-Enabled Drone Governance**
+*Published in: MIT Science Policy Review, Vol. 6, 2025*  
+*Authors: **D. Hernandez**, K. Harris, T. Hernandez, R. Morales*  
+*DOI: [10.38105/spr.3v9f8hi6zq](https://doi.org/10.38105/spr.3v9f8hi6zq)*
+
+<a href="https://assets.pubpub.org/mobu82dj/MITSPR-v6-191618006005-Drones-41754155000989.pdf">
+  <img src="https://img.shields.io/badge/Paper-Link-blue" style="transform: scale(1.1);">
+</a>
+
+<!-- === CRAWLER-FRIENDLY MICRODATA FOR GOOGLE SCHOLAR === -->
+<div itemscope itemtype="http://schema.org/ScholarlyArticle" style="display:none">
+  <meta itemprop="name" content="Navigating the Black Box: Operational Lenses for AI-Enabled Drone Governance">
+  <meta itemprop="headline" content="Navigating the Black Box: Operational Lenses for AI-Enabled Drone Governance">
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Demetrius Hernandez"></span>
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Kaitlin Harris"></span>
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Tristan Hernandez"></span>
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Rich Morales"></span>
+  <meta itemprop="datePublished" content="2025-08-05">
+  <meta itemprop="inLanguage" content="en">
+  <div itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical">
+    <meta itemprop="name" content="MIT Science Policy Review">
+    <meta itemprop="volumeNumber" content="6">
+  </div>
+  <meta itemprop="identifier" content="https://doi.org/10.38105/spr.3v9f8hi6zq">
+  <link itemprop="sameAs" href="https://doi.org/10.38105/spr.3v9f8hi6zq">
+  <link itemprop="url" href="https://sciencepolicyreview.pubpub.org/pub/yc0xe805">
+  <div itemprop="encoding" itemscope itemtype="http://schema.org/MediaObject">
+    <meta itemprop="fileFormat" content="application/pdf">
+    <link itemprop="contentUrl" href="https://assets.pubpub.org/mobu82dj/MITSPR-v6-191618006005-Drones-41754155000989.pdf">
+  </div>
+</div>
+
+
+---
+
+## **Navigating the Black Box: Operational Lenses for AI-Enabled Drone Governance**
 *Published in: MIT Science Policy Review (V6), 2025*  
 *Authors: **D. Hernandez**, K. Harris, T. Hernandez, R. Morales*  
 *DOI: [10.38105/spr.3v9f8hi6zq](https://doi.org/10.38105/spr.3v9f8hi6zq)*
