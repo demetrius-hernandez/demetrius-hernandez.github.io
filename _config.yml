@@ -21,7 +21,7 @@ repository               : #"academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Demetrius WSMR Headshot.png"
+  avatar           : "Demetrius-Headshot.png"
   name             : "Demetrius Hernandez"
   pronouns         : # example: "she/her"  
   bio              : "PhD student at The University of Notre Dame"
