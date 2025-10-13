@@ -6,6 +6,15 @@ author_profile: true
 
 ---
 
+## **BVLOS NPRM Comment**
+*Submitted to the Federal Aviation Administration (FAA), as part of the Notice of Proposed Rulemaking (NPRM) on Beyond Visual Line of Sight (BVLOS) operations*  
+
+<a href="../files/FAA-2025-1908-2877_DR_Comment.pdf">
+  <img src="https://img.shields.io/badge/Paper-Link-blue" style="transform: scale(1.1);">
+</a>
+
+---
+
 ## **Navigating the Black Box: Operational Lenses for AI-Enabled Drone Governance**
 *Published in: MIT Science Policy Review, Vol. 6, 2025*  
 *Authors: **D. Hernandez**, K. Harris, T. Hernandez, R. Morales*  
