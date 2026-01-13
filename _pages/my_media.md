@@ -6,6 +6,8 @@ author_profile: true
 
 Scroll down to explore my recent talks and media features. Showcasing key moments from my work and insights shared with diverse audiences.
 
+---
+
 ## **Computing Research News - Spotlight**
 
 An interview highlighting my invovlemenet with the NSF CSGrad4US Fellowship.
@@ -14,6 +16,7 @@ An interview highlighting my invovlemenet with the NSF CSGrad4US Fellowship.
   <img src="https://img.shields.io/badge/Read%20Article-Link-blue" style="transform: scale(1.1);">
 </a>
 
+---
 
 ## **Notre Dame-IBM Tech Ethics Lab Blog Post**
 
