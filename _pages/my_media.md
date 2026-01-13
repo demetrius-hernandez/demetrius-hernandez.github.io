@@ -8,6 +8,8 @@ Scroll down to explore my recent talks and media features. Showcasing key moment
 
 ---
 
+#   
+
 ## **Computing Research News - Spotlight**
 
 An interview highlighting my invovlemenet with the NSF CSGrad4US Fellowship.
@@ -20,7 +22,7 @@ An interview highlighting my invovlemenet with the NSF CSGrad4US Fellowship.
 
 ## **Notre Dame-IBM Tech Ethics Lab Blog Post**
 
-We have a remarkable opportunity to help build the best bridge to a future that unlocks the full spectrum of drone applications serving the common good.
+Blog post with the ND-IBM Tech ethics lab on building bridges for unlocking the full spectrum of drone applications serving the common good. 
 
 <a href="https://ethics.nd.edu/news-and-events/news/blog-post-building-the-bridge-to-the-autonomous-sky-how-the-faa-can-unlock-drones-for-the-public-good/">
   <img src="https://img.shields.io/badge/Read%20Article-Link-blue" style="transform: scale(1.1);">
