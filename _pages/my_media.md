@@ -6,11 +6,22 @@ author_profile: true
 
 Scroll down to explore my recent talks and media features. Showcasing key moments from my work and insights shared with diverse audiences.
 
----
+## **Computing Research News - Spotlight**
 
-# 🎥 Video Interviews & Features
+An interview highlighting my invovlemenet with the NSF CSGrad4US Fellowship.
 
----
+<a href="https://cra.org/crn/2025/10/nsf-csgrad4us-fellows-get-to-know-demetrius-hernandez/">
+  <img src="https://img.shields.io/badge/Read%20Article-Link-blue" style="transform: scale(1.1);">
+</a>
+
+
+## **Notre Dame-IBM Tech Ethics Lab Blog Post**
+
+We have a remarkable opportunity to help build the best bridge to a future that unlocks the full spectrum of drone applications serving the common good.
+
+<a href="https://ethics.nd.edu/news-and-events/news/blog-post-building-the-bridge-to-the-autonomous-sky-how-the-faa-can-unlock-drones-for-the-public-good/">
+  <img src="https://img.shields.io/badge/Read%20Article-Link-blue" style="transform: scale(1.1);">
+</a>
 
 ## **2025 Shaheen 3MT® Finals presentation**
 
@@ -41,6 +52,17 @@ But be sure to watch the whole discussion, as my fellow panelists shared incredi
 
 ---
 
+## **A White Sands Missile Range Employee is Awarded a DoD STEM Grant**
+I was awarded a grant to collaborate with New Mexico State University on custom drone development for counter-drone testing at White Sands Missile Range
+
+<a href="https://www.army.mil/article/270467/a_white_sands_missile_range_employee_is_awarded_a_dod_stem_grant">
+  <img src="https://img.shields.io/badge/Read%20Article-Link-blue" style="transform: scale(1.1);">
+</a>
+
+<!-- [![Read Article](https://img.shields.io/badge/Read%20Article-Link-blue)](https://www.army.mil/article/270467/a_white_sands_missile_range_employee_is_awarded_a_dod_stem_grant) -->
+
+---
+
 ## **Department of Defense Innovators Spotlight Series**  
 
 Delivered a brief ~15-minute presentation highlighting my work as a civilian employee. The presentation will also emphasize the critical role of collaboration and mentorship in achieving success.
@@ -53,21 +75,6 @@ Please watch the entire webinar, as my fellow participants highlight their incre
 <a href="https://www.youtube.com/watch?v=Bh-kM5tN-r8">
   <img src="https://img.shields.io/badge/Watch%20Video-Link-red" style="transform: scale(1.1);">
 </a>
-
----
-
-# 📰 Media & Websites
-
----
-
-## **A White Sands Missile Range Employee is Awarded a DoD STEM Grant**
-I was awarded a grant to collaborate with New Mexico State University on custom drone development for counter-drone testing at White Sands Missile Range
-
-<a href="https://www.army.mil/article/270467/a_white_sands_missile_range_employee_is_awarded_a_dod_stem_grant">
-  <img src="https://img.shields.io/badge/Read%20Article-Link-blue" style="transform: scale(1.1);">
-</a>
-
-<!-- [![Read Article](https://img.shields.io/badge/Read%20Article-Link-blue)](https://www.army.mil/article/270467/a_white_sands_missile_range_employee_is_awarded_a_dod_stem_grant) -->
 
 ---
 
