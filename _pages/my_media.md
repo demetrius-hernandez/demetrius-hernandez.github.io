@@ -8,9 +8,7 @@ Scroll down to explore my recent talks and media features. Showcasing key moment
 
 ---
 
-#   
-
-## **Computing Research News - Spotlight**
+## **Computing Research Association (CRA) - Spotlight**
 
 An interview highlighting my invovlemenet with the NSF CSGrad4US Fellowship.
 
