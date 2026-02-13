@@ -1,661 +1,1569 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Autonomy Dial</title>
-<meta name="description" content="An interactive exploration of enduring battlefield advantage through human-AI teaming. Army Mad Scientist Calling All Creators 2026.">
-<meta property="og:title" content="The Autonomy Dial">
-<meta property="og:description" content="Breaking the Innovation Cycle by Keeping Humans in the Fight.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#111;
-  --sf:#1a1a1a;
-  --bd:rgba(255,255,255,.08);
-  --tx:#f0f0f0;
-  --mt:#d4d4d4;
-  --dm:#9a9a9a;
-  --ac:#f59e0b;
-  --ac2:#d97706;
-  --acg:rgba(245,158,11,.08);
-  --gn:#22c55e;
-  --gng:rgba(34,197,94,.07);
-  --rd:#ef4444;
-  --rdg:rgba(239,68,68,.07);
-}
-html{font-size:18px}
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  background:var(--bg);color:var(--tx);
-  line-height:1.75;min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Autonomy Dial</title>
+  <meta name="description"
+    content="An interactive exploration of enduring battlefield advantage through human-AI teaming. Army Mad Scientist Calling All Creators 2026.">
+  <meta property="og:title" content="The Autonomy Dial">
+  <meta property="og:description" content="Breaking the Innovation Cycle by Keeping Humans in the Fight.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* Screens */
-.sc{display:none;opacity:0;transition:opacity 400ms;min-height:100vh;padding:3rem 2rem;max-width:700px;margin:0 auto}
-.sc.on{display:flex;flex-direction:column;align-items:center;justify-content:center}
-.sc.vis{opacity:1}
+    :root {
+      --bg: #111;
+      --sf: #1a1a1a;
+      --bd: rgba(255, 255, 255, .08);
+      --tx: #f0f0f0;
+      --mt: #d4d4d4;
+      --dm: #9a9a9a;
+      --ac: #f59e0b;
+      --ac2: #d97706;
+      --acg: rgba(245, 158, 11, .08);
+      --gn: #22c55e;
+      --gng: rgba(34, 197, 94, .07);
+      --rd: #ef4444;
+      --rdg: rgba(239, 68, 68, .07);
+    }
 
-/* Type */
-h1{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--ac);text-align:center;line-height:1.1}
-h2{font-size:1.35rem;font-weight:700;line-height:1.35;margin-bottom:.5rem}
-.lbl{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--dm)}
-p{color:var(--mt);margin-bottom:1rem}
-p:last-child{margin-bottom:0}
-strong{color:var(--tx);font-weight:600}
-.ac{color:var(--ac)}
+    html {
+      font-size: 18px
+    }
 
-/* Buttons */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:.75rem 2.2rem;font-family:inherit;font-size:.78rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  border:2px solid var(--ac);background:transparent;color:var(--ac);
-  cursor:pointer;transition:all 200ms;min-height:48px;
-}
-.btn:hover{background:var(--ac);color:var(--bg)}
-.btn:active{transform:scale(.97)}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.3)}50%{box-shadow:0 0 0 10px rgba(245,158,11,0)}}
-.pulse{animation:pulse 2s infinite}
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--tx);
+      line-height: 1.75;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ===== TITLE ===== */
-#title{text-align:center;gap:0}
-.t-intro{margin-top:2rem;max-width:520px;text-align:left}
-.t-intro p{font-size:.95rem}
-.t-foot{margin-top:3rem;font-size:.7rem;color:var(--dm);line-height:2;text-align:center}
-.t-q{margin-top:.6rem;font-size:.65rem;color:var(--dm);max-width:480px;line-height:1.7;font-style:italic;opacity:.5;text-align:center}
+    /* Screens */
+    .sc {
+      display: none;
+      opacity: 0;
+      transition: opacity 400ms;
+      min-height: 100vh;
+      padding: 3rem 2rem;
+      max-width: 700px;
+      margin: 0 auto
+    }
 
-/* ===== TUTORIAL ===== */
-#tut{text-align:center}
-.tw{max-width:580px;text-align:left}
-.tw h2{text-align:left}
-.tw>p{font-size:.92rem}
-.dl{margin:1.5rem 0;display:grid;gap:.4rem}
-.dlv{display:flex;align-items:baseline;gap:.75rem;padding:.55rem .75rem;border-left:3px solid var(--bd)}
-.dlv[data-l="0"]{border-color:var(--ac)}
-.dlv[data-l="1"]{border-color:var(--ac)}
-.dlv[data-l="2"]{border-color:var(--ac)}
-.dlv[data-l="3"]{border-color:var(--ac)}
-.dln{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);min-width:88px;flex-shrink:0}
-.dld{font-size:.82rem;color:var(--mt);line-height:1.5}
-.tn{margin:1.5rem 0;padding:.75rem 1rem;border-left:3px solid var(--ac);background:var(--acg);font-size:.88rem;color:var(--tx)}
+    .sc.on {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center
+    }
 
-/* ===== SCENARIO SCREEN ===== */
-#play{justify-content:flex-start;padding-top:1.5rem;max-width:740px}
-.topbar{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
-.dots{display:flex;gap:6px}
-.dot{width:10px;height:10px;border-radius:50%;border:2px solid rgba(255,255,255,.12);transition:all 300ms}
-.dot.done{border-color:var(--ac);background:var(--ac)}
-.dot.now{border-color:var(--ac);box-shadow:0 0 8px rgba(245,158,11,.35)}
-.dot.crisis{border-color:var(--rd);background:var(--rd);box-shadow:0 0 8px rgba(239,68,68,.3)}
-.rlbl{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dm)}
-.ubar{width:100%;height:2px;background:rgba(255,255,255,.04);margin-bottom:.8rem}
-.ufill{height:100%;background:var(--ac);opacity:.4;width:100%;transition:width 45s linear}
-.ufill.go{width:0%}
-.ufill.red{background:var(--rd)}
+    .sc.vis {
+      opacity: 1
+    }
 
-/* Commander's Approval bar */
-.ccbar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;padding:.55rem .85rem;border:1px solid var(--bd);background:rgba(255,255,255,.015)}
-.ccbar-lbl{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dm);white-space:nowrap}
-.ccbar-track{flex:1;height:6px;background:rgba(255,255,255,.05);overflow:hidden}
-.ccbar-fill{height:100%;background:var(--ac);transition:width 800ms ease}
-.ccbar-val{font-size:.68rem;font-weight:800;font-family:'SF Mono','Fira Code',Consolas,monospace;color:var(--ac);min-width:24px;text-align:right}
+    /* Type */
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ac);
+      text-align: center;
+      line-height: 1.1
+    }
 
-.smain{width:100%}
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: .5rem
+    }
 
-/* Hero */
-.hero{position:relative;height:180px;width:100%;margin-bottom:1.5rem;overflow:hidden;display:flex;align-items:flex-end}
-.hero-g{position:absolute;inset:0;z-index:1}
-.hero img,.hero svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;z-index:0}
-.hero-c{position:relative;z-index:2;padding:1.5rem;width:100%}
-.hero-r{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--ac);display:block;margin-bottom:.2rem}
-.hero h2{font-size:1.3rem;color:#fff;margin-bottom:0}
-.h1{background:linear-gradient(135deg,#0d1520,#162030,#0d1828)}
-.h2{background:linear-gradient(135deg,#140d20,#1a1030,#0d1428)}
-.h3{background:linear-gradient(135deg,#0d1515,#102828,#0d1820)}
-.h4{background:linear-gradient(135deg,#1a1208,#2a1a10,#1a1218)}
-.h5{background:linear-gradient(135deg,#1a0a0a,#2a1010,#1a0d15)}
-.hero-g{background:linear-gradient(transparent 20%,#111)}
+    .lbl {
+      font-size: .68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--dm)
+    }
 
-/* Setup text */
-.setup{font-size:.95rem;color:var(--mt);line-height:1.8;margin-bottom:2rem}
+    p {
+      color: var(--mt);
+      margin-bottom: 1rem
+    }
 
-/* Dial */
-.dw{margin-bottom:2rem}
-.dh{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dm);margin-bottom:.7rem;text-align:center}
-.dsegs{display:flex;width:100%;border:1px solid var(--bd);overflow:hidden}
-.dseg{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:.8rem .3rem;cursor:pointer;transition:all 200ms;
-  border-right:1px solid var(--bd);user-select:none;text-align:center;
-}
-.dseg:last-child{border-right:none}
-.dseg-n{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--dm);transition:color 200ms;line-height:1.25}
-.dseg:hover{background:rgba(255,255,255,.02)}
-.dseg:hover .dseg-n{color:var(--mt)}
-.dseg.on{background:var(--acg);box-shadow:inset 0 -3px 0 var(--ac)}
-.dseg.on .dseg-n{color:var(--ac)}
-.ddesc{text-align:center;margin-top:.7rem;font-size:.82rem;color:var(--mt);min-height:4em;line-height:1.5}
-.dconf{text-align:center;margin-top:1rem;display:none}
+    p:last-child {
+      margin-bottom: 0
+    }
 
-/* Narrative */
-.narr{font-size:.95rem;color:var(--mt);line-height:1.85;margin-bottom:1.5rem;opacity:0;transform:translateY(10px);transition:all 500ms}
-.narr.vis{opacity:1;transform:translateY(0)}
-.narr p{margin-bottom:.8rem;color:var(--mt)}
+    strong {
+      color: var(--tx);
+      font-weight: 600
+    }
 
-/* Throughput feedback */
-.tpf{padding:1rem 1.2rem;border:1px solid var(--bd);margin-bottom:1.5rem;opacity:0;transform:translateY(8px);transition:all 400ms}
-.tpf.vis{opacity:1;transform:translateY(0)}
-.tpf-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem}
-.tpf-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dm)}
-.tpf-bars{display:flex;gap:3px}
-.tpf-bar{width:18px;height:10px;background:rgba(255,255,255,.06);transition:background 300ms}
-.tpf-bar.on{background:var(--gn)}
-.tpf-rating{font-size:.72rem;font-weight:700;color:var(--gn);margin-left:auto}
-.tpf-praise{font-size:.82rem;color:var(--mt);line-height:1.55}
+    .ac {
+      color: var(--ac)
+    }
 
-/* Postscript */
-.ps{font-size:.82rem;color:var(--dm);font-style:italic;margin-bottom:1.5rem;opacity:0;transition:opacity 400ms}
-.ps.vis{opacity:1}
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .75rem 2.2rem;
+      font-family: inherit;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border: 2px solid var(--ac);
+      background: transparent;
+      color: var(--ac);
+      cursor: pointer;
+      transition: all 200ms;
+      min-height: 48px;
+    }
 
-/* Continue */
-.cnav{text-align:center;margin-top:.5rem;opacity:0;transition:opacity 400ms}
-.cnav.vis{opacity:1}
+    .btn:hover {
+      background: var(--ac);
+      color: var(--bg)
+    }
 
-/* Crisis */
-.crisis-box{padding:1rem 1.2rem;border:1px solid var(--rd);background:var(--rdg);margin-bottom:1.5rem;text-align:center}
-.crisis-box h3{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--rd);margin-bottom:.2rem}
-.crisis-box p{font-size:.82rem;color:var(--mt);margin:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.blink{animation:blink 1s infinite}
+    .btn:active {
+      transform: scale(.97)
+    }
 
-/* ===== TRANSITION ===== */
-.tov{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 350ms}
-.tov.vis{opacity:1;pointer-events:auto}
-.tov .tr{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.25em;color:var(--ac);margin-bottom:.5rem}
-.tov .tt{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:800;color:var(--tx);text-align:center}
-.tov .tl{width:0;height:2px;background:var(--ac);margin-top:1.2rem;transition:width 800ms ease}
-.tov.vis .tl{width:70px}
-.tov.cri .tr{color:var(--rd)}
-.tov.cri .tl{background:var(--rd)}
+    @keyframes pulse {
 
-/* ===== RESULTS ===== */
-#res{justify-content:flex-start;padding-top:2.5rem}
-.rw{width:100%;max-width:640px}
-.rv{opacity:0;transform:translateY(10px);transition:all 600ms}
-.rv.sh{opacity:1;transform:translateY(0)}
-.ga{text-align:center;margin-bottom:2.5rem}
-.gv{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:900;text-transform:uppercase;letter-spacing:.05em;line-height:1.2}
-.gs{font-size:.88rem;color:var(--mt);margin-top:.35rem}
-.sc-card{text-align:center;padding:1.5rem 1rem;margin-bottom:1rem}
-.sc-num{font-size:2.8rem;font-weight:900;font-family:'SF Mono','Fira Code',Consolas,monospace;line-height:1}
-.sc-num.tp{color:var(--ac)}
-.sc-num.rd{color:var(--gn)}
-.sc-num.rd.low{color:var(--rd)}
-.sc-lbl{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--dm);margin-top:.3rem}
-.but{text-align:center;margin:2rem 0 1.5rem;padding:1rem;border-top:1px solid var(--bd)}
-.but p{font-size:.95rem;color:var(--mt);font-style:italic}
-.rg{margin:1.5rem 0;padding:1rem 1.2rem;border:1px solid var(--bd)}
-.rg h3{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ac);margin-bottom:.7rem}
-.rgr{display:flex;align-items:center;gap:.7rem;padding:.35rem 0}
-.rgrl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dm);min-width:44px}
-.rgrt{flex:1;height:8px;background:rgba(255,255,255,.04);overflow:hidden}
-.rgrf{height:100%;background:var(--gn);transition:width 800ms;width:0}
-.rgrf.low{background:var(--rd)}
-.rgrf.mid{background:var(--ac)}
-.rgrv{font-size:.7rem;font-family:'SF Mono',Consolas,monospace;color:var(--dm);min-width:26px;text-align:right}
-.co{margin:2rem 0;padding:1.2rem 1.5rem}
-.co p{font-size:.92rem;color:var(--tx);line-height:1.75}
-.ins{margin:2rem 0;padding:1.5rem;border-left:3px solid var(--ac);background:var(--acg)}
-.ins p{font-size:.92rem;color:var(--tx);line-height:1.75}
-.ins .pq{font-size:1.1rem;font-weight:700;color:var(--ac);line-height:1.35;margin:1rem 0}
-.ins strong{color:var(--ac)}
-.tl{margin:2rem 0}
-.tl h3{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ac);margin-bottom:.7rem}
-.tlr{display:flex;align-items:center;gap:.7rem;padding:.4rem 0;border-bottom:1px solid var(--bd)}
-.tlr:last-child{border-bottom:none}
-.tlrn{font-size:.65rem;font-weight:700;letter-spacing:.06em;color:var(--dm);min-width:22px}
-.tlrs{display:flex;gap:2px;flex-shrink:0}
-.tlrseg{width:14px;height:7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
-.tlrseg.on{background:var(--ac);border-color:var(--ac)}
-.tlrt{font-size:.78rem;color:var(--mt)}
-.tlr.cri .tlrn,.tlr.cri .tlrt{color:var(--rd);font-weight:600}
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, .3)
+      }
 
-/* ===== CLOSING ===== */
-#end{text-align:center}
-.ew{max-width:560px}
-.ew p{font-size:.95rem;text-align:center;line-height:1.85}
-.ew .hl{color:var(--ac);font-weight:600}
-.ea{margin-top:2.5rem;font-size:.82rem;color:var(--dm);line-height:1.9}
-.ea strong{color:var(--mt)}
-.ef{margin-top:1.5rem;font-size:.65rem;color:var(--dm);font-style:italic;opacity:.5}
+      50% {
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0)
+      }
+    }
 
-/* Responsive */
-@media(max-width:600px){
-  html{font-size:16px}
-  .sc{padding:2rem 1.2rem}
-  .hero{height:140px}
-  .dseg{padding:.7rem .2rem}
-  .dseg-n{font-size:.55rem}
-}
-</style>
+    .pulse {
+      animation: pulse 2s infinite
+    }
+
+    /* ===== TITLE ===== */
+    #title {
+      text-align: center;
+      gap: 0
+    }
+
+    .t-intro {
+      margin-top: 2rem;
+      max-width: 520px;
+      text-align: left
+    }
+
+    .t-intro p {
+      font-size: .95rem
+    }
+
+    .t-foot {
+      margin-top: 3rem;
+      font-size: .7rem;
+      color: var(--dm);
+      line-height: 2;
+      text-align: center
+    }
+
+    .t-q {
+      margin-top: .6rem;
+      font-size: .65rem;
+      color: var(--dm);
+      max-width: 480px;
+      line-height: 1.7;
+      font-style: italic;
+      opacity: .5;
+      text-align: center
+    }
+
+    /* ===== TUTORIAL ===== */
+    #tut {
+      text-align: center
+    }
+
+    .tw {
+      max-width: 580px;
+      text-align: left
+    }
+
+    .tw h2 {
+      text-align: left
+    }
+
+    .tw>p {
+      font-size: .92rem
+    }
+
+    .dl {
+      margin: 1.5rem 0;
+      display: grid;
+      gap: .4rem
+    }
+
+    .dlv {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      padding: .55rem .75rem;
+      border-left: 3px solid var(--bd)
+    }
+
+    .dlv[data-l="0"] {
+      border-color: var(--ac)
+    }
+
+    .dlv[data-l="1"] {
+      border-color: var(--ac)
+    }
+
+    .dlv[data-l="2"] {
+      border-color: var(--ac)
+    }
+
+    .dlv[data-l="3"] {
+      border-color: var(--ac)
+    }
+
+    .dln {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ac);
+      min-width: 88px;
+      flex-shrink: 0
+    }
+
+    .dld {
+      font-size: .82rem;
+      color: var(--mt);
+      line-height: 1.5
+    }
+
+    .tn {
+      margin: 1.5rem 0;
+      padding: .75rem 1rem;
+      border-left: 3px solid var(--ac);
+      background: var(--acg);
+      font-size: .88rem;
+      color: var(--tx)
+    }
+
+    /* ===== SCENARIO SCREEN ===== */
+    #play {
+      justify-content: flex-start;
+      padding-top: 1.5rem;
+      max-width: 740px
+    }
+
+    .topbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, .12);
+      transition: all 300ms
+    }
+
+    .dot.done {
+      border-color: var(--ac);
+      background: var(--ac)
+    }
+
+    .dot.now {
+      border-color: var(--ac);
+      box-shadow: 0 0 8px rgba(245, 158, 11, .35)
+    }
+
+    .dot.crisis {
+      border-color: var(--rd);
+      background: var(--rd);
+      box-shadow: 0 0 8px rgba(239, 68, 68, .3)
+    }
+
+    .rlbl {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--dm)
+    }
+
+    .ubar {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, .04);
+      margin-bottom: .8rem
+    }
+
+    .ufill {
+      height: 100%;
+      background: var(--ac);
+      opacity: .4;
+      width: 100%;
+      transition: width 45s linear
+    }
+
+    .ufill.go {
+      width: 0%
+    }
+
+    .ufill.red {
+      background: var(--rd)
+    }
+
+    /* Commander's Approval bar */
+    .ccbar {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.5rem;
+      padding: .55rem .85rem;
+      border: 1px solid var(--bd);
+      background: rgba(255, 255, 255, .015)
+    }
+
+    .ccbar-lbl {
+      font-size: .58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--dm);
+      white-space: nowrap
+    }
+
+    .ccbar-track {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, .05);
+      overflow: hidden
+    }
+
+    .ccbar-fill {
+      height: 100%;
+      background: var(--ac);
+      transition: width 800ms ease
+    }
+
+    .ccbar-val {
+      font-size: .68rem;
+      font-weight: 800;
+      font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+      color: var(--ac);
+      min-width: 24px;
+      text-align: right
+    }
+
+    .smain {
+      width: 100%
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 180px;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end
+    }
+
+    .hero-g {
+      position: absolute;
+      inset: 0;
+      z-index: 1
+    }
+
+    .hero img,
+    .hero svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .35;
+      z-index: 0
+    }
+
+    .hero-c {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      width: 100%
+    }
+
+    .hero-r {
+      font-size: .62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--ac);
+      display: block;
+      margin-bottom: .2rem
+    }
+
+    .hero h2 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0
+    }
+
+    .h1 {
+      background: linear-gradient(135deg, #0d1520, #162030, #0d1828)
+    }
+
+    .h2 {
+      background: linear-gradient(135deg, #140d20, #1a1030, #0d1428)
+    }
+
+    .h3 {
+      background: linear-gradient(135deg, #0d1515, #102828, #0d1820)
+    }
+
+    .h4 {
+      background: linear-gradient(135deg, #1a1208, #2a1a10, #1a1218)
+    }
+
+    .h5 {
+      background: linear-gradient(135deg, #1a0a0a, #2a1010, #1a0d15)
+    }
+
+    .hero-g {
+      background: linear-gradient(transparent 20%, #111)
+    }
+
+    /* Setup text */
+    .setup {
+      font-size: .95rem;
+      color: var(--mt);
+      line-height: 1.8;
+      margin-bottom: 2rem
+    }
+
+    /* Dial */
+    .dw {
+      margin-bottom: 2rem
+    }
+
+    .dh {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--dm);
+      margin-bottom: .7rem;
+      text-align: center
+    }
+
+    .dsegs {
+      display: flex;
+      width: 100%;
+      border: 1px solid var(--bd);
+      overflow: hidden
+    }
+
+    .dseg {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: .8rem .3rem;
+      cursor: pointer;
+      transition: all 200ms;
+      border-right: 1px solid var(--bd);
+      user-select: none;
+      text-align: center;
+    }
+
+    .dseg:last-child {
+      border-right: none
+    }
+
+    .dseg-n {
+      font-size: .62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--dm);
+      transition: color 200ms;
+      line-height: 1.25
+    }
+
+    .dseg:hover {
+      background: rgba(255, 255, 255, .02)
+    }
+
+    .dseg:hover .dseg-n {
+      color: var(--mt)
+    }
+
+    .dseg.on {
+      background: var(--acg);
+      box-shadow: inset 0 -3px 0 var(--ac)
+    }
+
+    .dseg.on .dseg-n {
+      color: var(--ac)
+    }
+
+    .ddesc {
+      text-align: center;
+      margin-top: .7rem;
+      font-size: .82rem;
+      color: var(--mt);
+      min-height: 4em;
+      line-height: 1.5
+    }
+
+    .dconf {
+      text-align: center;
+      margin-top: 1rem;
+      display: none
+    }
+
+    /* Narrative */
+    .narr {
+      font-size: .95rem;
+      color: var(--mt);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 500ms
+    }
+
+    .narr.vis {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .narr p {
+      margin-bottom: .8rem;
+      color: var(--mt)
+    }
+
+    /* Throughput feedback */
+    .tpf {
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--bd);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 400ms
+    }
+
+    .tpf.vis {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .tpf-top {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: .4rem
+    }
+
+    .tpf-lbl {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--dm)
+    }
+
+    .tpf-bars {
+      display: flex;
+      gap: 3px
+    }
+
+    .tpf-bar {
+      width: 18px;
+      height: 10px;
+      background: rgba(255, 255, 255, .06);
+      transition: background 300ms
+    }
+
+    .tpf-bar.on {
+      background: var(--gn)
+    }
+
+    .tpf-rating {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--gn);
+      margin-left: auto
+    }
+
+    .tpf-praise {
+      font-size: .82rem;
+      color: var(--mt);
+      line-height: 1.55
+    }
+
+    /* Postscript */
+    .ps {
+      font-size: .82rem;
+      color: var(--dm);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transition: opacity 400ms
+    }
+
+    .ps.vis {
+      opacity: 1
+    }
+
+    /* Continue */
+    .cnav {
+      text-align: center;
+      margin-top: .5rem;
+      opacity: 0;
+      transition: opacity 400ms
+    }
+
+    .cnav.vis {
+      opacity: 1
+    }
+
+    /* Crisis */
+    .crisis-box {
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--rd);
+      background: var(--rdg);
+      margin-bottom: 1.5rem;
+      text-align: center
+    }
+
+    .crisis-box h3 {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--rd);
+      margin-bottom: .2rem
+    }
+
+    .crisis-box p {
+      font-size: .82rem;
+      color: var(--mt);
+      margin: 0
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    .blink {
+      animation: blink 1s infinite
+    }
+
+    /* ===== TRANSITION ===== */
+    .tov {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 350ms
+    }
+
+    .tov.vis {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .tov .tr {
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: var(--ac);
+      margin-bottom: .5rem
+    }
+
+    .tov .tt {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-weight: 800;
+      color: var(--tx);
+      text-align: center
+    }
+
+    .tov .tl {
+      width: 0;
+      height: 2px;
+      background: var(--ac);
+      margin-top: 1.2rem;
+      transition: width 800ms ease
+    }
+
+    .tov.vis .tl {
+      width: 70px
+    }
+
+    .tov.cri .tr {
+      color: var(--rd)
+    }
+
+    .tov.cri .tl {
+      background: var(--rd)
+    }
+
+    /* ===== RESULTS ===== */
+    #res {
+      justify-content: flex-start;
+      padding-top: 2.5rem
+    }
+
+    .rw {
+      width: 100%;
+      max-width: 640px
+    }
+
+    .rv {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 600ms
+    }
+
+    .rv.sh {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .ga {
+      text-align: center;
+      margin-bottom: 2.5rem
+    }
+
+    .gv {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      line-height: 1.2
+    }
+
+    .gs {
+      font-size: .88rem;
+      color: var(--mt);
+      margin-top: .35rem
+    }
+
+    .sc-card {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-bottom: 1rem
+    }
+
+    .sc-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+      line-height: 1
+    }
+
+    .sc-num.tp {
+      color: var(--ac)
+    }
+
+    .sc-num.rd {
+      color: var(--gn)
+    }
+
+    .sc-num.rd.low {
+      color: var(--rd)
+    }
+
+    .sc-lbl {
+      font-size: .65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--dm);
+      margin-top: .3rem
+    }
+
+    .but {
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+      padding: 1rem;
+      border-top: 1px solid var(--bd)
+    }
+
+    .but p {
+      font-size: .95rem;
+      color: var(--mt);
+      font-style: italic
+    }
+
+    .rg {
+      margin: 1.5rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--bd)
+    }
+
+    .rg h3 {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ac);
+      margin-bottom: .7rem
+    }
+
+    .rgr {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .35rem 0
+    }
+
+    .rgrl {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--dm);
+      min-width: 44px
+    }
+
+    .rgrt {
+      flex: 1;
+      height: 8px;
+      background: rgba(255, 255, 255, .04);
+      overflow: hidden
+    }
+
+    .rgrf {
+      height: 100%;
+      background: var(--gn);
+      transition: width 800ms;
+      width: 0
+    }
+
+    .rgrf.low {
+      background: var(--rd)
+    }
+
+    .rgrf.mid {
+      background: var(--ac)
+    }
+
+    .rgrv {
+      font-size: .7rem;
+      font-family: 'SF Mono', Consolas, monospace;
+      color: var(--dm);
+      min-width: 26px;
+      text-align: right
+    }
+
+    .co {
+      margin: 2rem 0;
+      padding: 1.2rem 1.5rem
+    }
+
+    .co p {
+      font-size: .92rem;
+      color: var(--tx);
+      line-height: 1.75
+    }
+
+    .ins {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-left: 3px solid var(--ac);
+      background: var(--acg)
+    }
+
+    .ins p {
+      font-size: .92rem;
+      color: var(--tx);
+      line-height: 1.75
+    }
+
+    .ins .pq {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ac);
+      line-height: 1.35;
+      margin: 1rem 0
+    }
+
+    .ins strong {
+      color: var(--ac)
+    }
+
+    .tl {
+      margin: 2rem 0
+    }
+
+    .tl h3 {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ac);
+      margin-bottom: .7rem
+    }
+
+    .tlr {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .4rem 0;
+      border-bottom: 1px solid var(--bd)
+    }
+
+    .tlr:last-child {
+      border-bottom: none
+    }
+
+    .tlrn {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--dm);
+      min-width: 22px
+    }
+
+    .tlrs {
+      display: flex;
+      gap: 2px;
+      flex-shrink: 0
+    }
+
+    .tlrseg {
+      width: 14px;
+      height: 7px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .tlrseg.on {
+      background: var(--ac);
+      border-color: var(--ac)
+    }
+
+    .tlrt {
+      font-size: .78rem;
+      color: var(--mt)
+    }
+
+    .tlr.cri .tlrn,
+    .tlr.cri .tlrt {
+      color: var(--rd);
+      font-weight: 600
+    }
+
+    /* ===== CLOSING ===== */
+    #end {
+      text-align: center
+    }
+
+    .ew {
+      max-width: 560px
+    }
+
+    .ew p {
+      font-size: .95rem;
+      text-align: center;
+      line-height: 1.85
+    }
+
+    .ew .hl {
+      color: var(--ac);
+      font-weight: 600
+    }
+
+    .ea {
+      margin-top: 2.5rem;
+      font-size: .82rem;
+      color: var(--dm);
+      line-height: 1.9
+    }
+
+    .ea strong {
+      color: var(--mt)
+    }
+
+    .ef {
+      margin-top: 1.5rem;
+      font-size: .65rem;
+      color: var(--dm);
+      font-style: italic;
+      opacity: .5
+    }
+
+    /* Responsive */
+    @media(max-width:600px) {
+      html {
+        font-size: 16px
+      }
+
+      .sc {
+        padding: 2rem 1.2rem
+      }
+
+      .hero {
+        height: 140px
+      }
+
+      .dseg {
+        padding: .7rem .2rem
+      }
+
+      .dseg-n {
+        font-size: .55rem
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- TITLE -->
-<div id="title" class="sc on">
-  <div class="lbl" style="margin-bottom:2.5rem">Army Mad Scientist &middot; Calling All Creators 2026</div>
-  <h1>The Autonomy<br>Dial</h1>
-  <p style="text-align:center;margin-top:.5rem;font-size:.92rem;color:var(--mt)">Breaking the Innovation Cycle by Keeping Humans in the Fight</p>
-  <div class="t-intro">
-    <p>You are a Joint Task Force intelligence analyst in the Indo-Pacific. Your unit has a new tool: <strong class="ac">ARTEMIS</strong> &mdash; an agentic AI that fuses ISR, assesses threats, and develops courses of action.</p>
-    <p>The adversary is innovating in weeks. Your Commander needs faster output. <strong>Your goal: maximize operational productivity and the Commander&rsquo;s approval of your section.</strong></p>
-    <p>ARTEMIS can help. <strong>But how much should you let it do?</strong></p>
-  </div>
-  <div style="margin-top:2rem"><button class="btn pulse" onclick="go('tut')">Begin</button></div>
-  <div class="t-foot">Demetrius Hernandez &middot; University of Notre Dame<br>Submission to Army Mad Scientist "Calling All Creators 2026"</div>
-  <div class="t-q">An interactive exploration of the Army Transformation Challenge: How can the U.S. Army and Joint Force break the innovation/counter-innovation cycle and field robust capabilities that provide enduring battlefield advantage?</div>
-</div>
-
-<!-- TUTORIAL -->
-<div id="tut" class="sc">
-  <div class="tw">
-    <div class="lbl" style="margin-bottom:1rem">System Orientation</div>
-    <h2>Before each scenario, you set the Autonomy Dial.</h2>
-    <p style="margin-top:.4rem">It determines how much ARTEMIS handles. Your performance is measured by <strong>operational productivity</strong> and <strong>Commander&rsquo;s approval.</strong></p>
-    <div class="dl">
-      <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dm);padding:.3rem .75rem">Human-Driven</div>
-      <div class="dlv" data-l="0"><div class="dln">Manual</div><div class="dld">No AI support. You work from raw data alone.</div></div>
-      <div class="dlv" data-l="1"><div class="dln">Human-Led</div><div class="dld">ARTEMIS organizes data. You do the analysis.</div></div>
-      <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dm);padding:.3rem .75rem;margin-top:.4rem">AI-Driven</div>
-      <div class="dlv" data-l="2"><div class="dln">AI-Led</div><div class="dld">ARTEMIS analyzes and recommends. You approve.</div></div>
-      <div class="dlv" data-l="3"><div class="dln">Full AI</div><div class="dld">ARTEMIS handles everything. You supervise.</div></div>
+  <!-- TITLE -->
+  <div id="title" class="sc on">
+    <div class="lbl" style="margin-bottom:2.5rem">Army Mad Scientist &middot; Calling All Creators 2026</div>
+    <h1>The Autonomy<br>Dial</h1>
+    <p style="text-align:center;margin-top:.5rem;font-size:.92rem;color:var(--mt)">Breaking the Innovation Cycle by
+      Keeping Humans in the Fight</p>
+    <div class="t-intro">
+      <p>You are a Joint Task Force intelligence analyst in the Indo-Pacific. Your unit has a new tool: <strong
+          class="ac">ARTEMIS</strong> &mdash; an agentic AI that fuses ISR, assesses threats, and develops courses of
+        action.</p>
+      <p>The adversary is innovating in weeks. Your Commander needs faster output. <strong>Your goal: maximize
+          operational productivity and the Commander&rsquo;s approval of your section.</strong></p>
+      <p>ARTEMIS can help. <strong>But how much should you let it do?</strong></p>
     </div>
-    <div class="tn"><strong>5 scenarios across an 8-month deployment.</strong> Your goal: maximize productivity and the Commander&rsquo;s approval. The Commander is watching.</div>
-    <div style="text-align:center;margin-top:1.5rem"><button class="btn" onclick="startMission()">Start Mission</button></div>
+    <div style="margin-top:2rem"><button class="btn pulse" onclick="go('tut')">Begin</button></div>
+    <div class="t-foot">Demetrius Hernandez, Tomas Sousa Pereira, and Tristan Hernandez<br>Submission to Army Mad
+      Scientist "Calling All Creators 2026"</div>
+    <div class="t-q">An interactive exploration of the Army Transformation Challenge: How can the U.S. Army and Joint
+      Force break the innovation/counter-innovation cycle and field robust capabilities that provide enduring
+      battlefield advantage?</div>
   </div>
-</div>
 
-<!-- PLAY -->
-<div id="play" class="sc">
-  <div class="topbar">
-    <div class="dots" id="dots"></div>
-    <div class="rlbl" id="rlbl"></div>
+  <!-- TUTORIAL -->
+  <div id="tut" class="sc">
+    <div class="tw">
+      <div class="lbl" style="margin-bottom:1rem">System Orientation</div>
+      <h2>Before each scenario, you set the Autonomy Dial.</h2>
+      <p style="margin-top:.4rem">It determines how much ARTEMIS handles. Your performance is measured by
+        <strong>operational productivity</strong> and <strong>Commander&rsquo;s approval.</strong>
+      </p>
+      <div class="dl">
+        <div
+          style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dm);padding:.3rem .75rem">
+          Human-Driven</div>
+        <div class="dlv" data-l="0">
+          <div class="dln">Manual</div>
+          <div class="dld">No AI support. You work from raw data alone.</div>
+        </div>
+        <div class="dlv" data-l="1">
+          <div class="dln">Human-Led</div>
+          <div class="dld">ARTEMIS organizes data. You do the analysis.</div>
+        </div>
+        <div
+          style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dm);padding:.3rem .75rem;margin-top:.4rem">
+          AI-Driven</div>
+        <div class="dlv" data-l="2">
+          <div class="dln">AI-Led</div>
+          <div class="dld">ARTEMIS analyzes and recommends. You approve.</div>
+        </div>
+        <div class="dlv" data-l="3">
+          <div class="dln">Full AI</div>
+          <div class="dld">ARTEMIS handles everything. You supervise.</div>
+        </div>
+      </div>
+      <div class="tn"><strong>5 scenarios across an 8-month deployment.</strong> Your goal: maximize productivity and
+        the Commander&rsquo;s approval. The Commander is watching.</div>
+      <div style="text-align:center;margin-top:1.5rem"><button class="btn" onclick="startMission()">Start
+          Mission</button></div>
+    </div>
   </div>
-  <div class="ubar"><div class="ufill" id="ufill"></div></div>
-  <div class="ccbar" id="tpbar" style="margin-bottom:.5rem">
-    <span class="ccbar-lbl">Mission Output</span>
-    <div class="ccbar-track"><div class="ccbar-fill" id="tpfill" style="width:0%"></div></div>
-    <span class="ccbar-val" id="tpval">0</span>
+
+  <!-- PLAY -->
+  <div id="play" class="sc">
+    <div class="topbar">
+      <div class="dots" id="dots"></div>
+      <div class="rlbl" id="rlbl"></div>
+    </div>
+    <div class="ubar">
+      <div class="ufill" id="ufill"></div>
+    </div>
+    <div class="ccbar" id="tpbar" style="margin-bottom:.5rem">
+      <span class="ccbar-lbl">Mission Output</span>
+      <div class="ccbar-track">
+        <div class="ccbar-fill" id="tpfill" style="width:0%"></div>
+      </div>
+      <span class="ccbar-val" id="tpval">0</span>
+    </div>
+    <div class="ccbar" id="ccbar">
+      <span class="ccbar-lbl">Commander&rsquo;s Approval</span>
+      <div class="ccbar-track">
+        <div class="ccbar-fill" id="ccfill" style="width:50%"></div>
+      </div>
+      <span class="ccbar-val" id="ccval">50</span>
+    </div>
+    <div class="smain" id="smain"></div>
   </div>
-  <div class="ccbar" id="ccbar">
-    <span class="ccbar-lbl">Commander&rsquo;s Approval</span>
-    <div class="ccbar-track"><div class="ccbar-fill" id="ccfill" style="width:50%"></div></div>
-    <span class="ccbar-val" id="ccval">50</span>
+
+  <!-- TRANSITION -->
+  <div class="tov" id="tov">
+    <div class="tr" id="tovr"></div>
+    <div class="tt" id="tovt"></div>
+    <div class="tl"></div>
   </div>
-  <div class="smain" id="smain"></div>
-</div>
 
-<!-- TRANSITION -->
-<div class="tov" id="tov">
-  <div class="tr" id="tovr"></div>
-  <div class="tt" id="tovt"></div>
-  <div class="tl"></div>
-</div>
-
-<!-- RESULTS -->
-<div id="res" class="sc">
-  <div class="rw">
-    <div class="rv" id="r0"><div class="ga"><div class="lbl" style="margin-bottom:.4rem">After-Action Assessment</div><div class="gv" id="gv"></div><div class="gs" id="gsub"></div></div></div>
-    <div class="rv" id="r1"><div class="sc-card"><div class="sc-num tp" id="ftp">0</div><div class="sc-lbl">Mission Output</div></div><p style="text-align:center;font-size:.85rem;color:var(--dm)" id="tpsub"></p></div>
-    <div class="rv" id="r2"><div class="sc-card"><div class="sc-num" style="color:var(--ac)" id="fcc">0</div><div class="sc-lbl">Commander&rsquo;s Approval</div></div><p style="text-align:center;font-size:.85rem;color:var(--dm)" id="ccsub"></p></div>
-    <div class="rv" id="r3"><div class="but"><p>But there was a cost you didn&rsquo;t see.</p></div></div>
-    <div class="rv" id="r4"><div class="sc-card"><div class="sc-num rd" id="frd">0</div><div class="sc-lbl">Cognitive Readiness</div></div><div class="rg" id="rg"><h3>Your Readiness Over Time</h3></div></div>
-    <div class="rv" id="r5"><div class="co" id="cop"></div></div>
-    <div class="rv" id="r6"><div class="tl" id="tla"><h3>Your Autonomy Choices</h3></div></div>
-    <div class="rv" id="r7"><div class="ins" id="insbox"></div></div>
-    <div class="rv" id="r8" style="text-align:center;margin-top:2rem"><button class="btn" onclick="go('end')">Continue</button></div>
+  <!-- RESULTS -->
+  <div id="res" class="sc">
+    <div class="rw">
+      <div class="rv" id="r0">
+        <div class="ga">
+          <div class="lbl" style="margin-bottom:.4rem">After-Action Assessment</div>
+          <div class="gv" id="gv"></div>
+          <div class="gs" id="gsub"></div>
+        </div>
+      </div>
+      <div class="rv" id="r1">
+        <div class="sc-card">
+          <div class="sc-num tp" id="ftp">0</div>
+          <div class="sc-lbl">Mission Output</div>
+        </div>
+        <p style="text-align:center;font-size:.85rem;color:var(--dm)" id="tpsub"></p>
+      </div>
+      <div class="rv" id="r2">
+        <div class="sc-card">
+          <div class="sc-num" style="color:var(--ac)" id="fcc">0</div>
+          <div class="sc-lbl">Commander&rsquo;s Approval</div>
+        </div>
+        <p style="text-align:center;font-size:.85rem;color:var(--dm)" id="ccsub"></p>
+      </div>
+      <div class="rv" id="r3">
+        <div class="but">
+          <p>But there was a cost you didn&rsquo;t see.</p>
+        </div>
+      </div>
+      <div class="rv" id="r4">
+        <div class="sc-card">
+          <div class="sc-num rd" id="frd">0</div>
+          <div class="sc-lbl">Cognitive Readiness</div>
+        </div>
+        <div class="rg" id="rg">
+          <h3>Your Readiness Over Time</h3>
+        </div>
+      </div>
+      <div class="rv" id="r5">
+        <div class="co" id="cop"></div>
+      </div>
+      <div class="rv" id="r6">
+        <div class="tl" id="tla">
+          <h3>Your Autonomy Choices</h3>
+        </div>
+      </div>
+      <div class="rv" id="r7">
+        <div class="ins" id="insbox"></div>
+      </div>
+      <div class="rv" id="r8" style="text-align:center;margin-top:2rem"><button class="btn"
+          onclick="go('end')">Continue</button></div>
+    </div>
   </div>
-</div>
 
-<!-- CLOSING -->
-<div id="end" class="sc">
-  <div class="ew">
-    <div class="lbl" style="margin-bottom:1rem">Enduring Advantage</div>
-    <h2 style="text-align:center;margin-bottom:1.2rem">Architecture Beats Artifacts</h2>
-    <p>This experience explores <span class="hl">bidirectional alignment</span> &mdash; designing AI systems that don&rsquo;t just serve human goals, but actively preserve the human cognitive capacity that enduring advantage requires.</p>
-    <p>The innovation/counter-innovation cycle is unbreakable if your advantage depends on a specific capability. Drones get countered by jammers. Each side gains weeks of advantage before the other adapts.</p>
-    <p>The way to break the cycle is to make the advantage <em>architectural.</em> Agentic AI accelerates decisions &mdash; while deliberately keeping operators sharp. When the adversary counters the AI, the human can still think, adapt, and fight.</p>
-    <p>This means designing AI with <strong class="ac">adjustable autonomy</strong> that operators control, building in <strong class="ac">cognitive fitness</strong> so the system actively keeps humans sharp, and engineering <strong class="ac">fallback readiness</strong> that assumes technology will eventually fail.</p>
-    <p><strong class="ac">The human mind is critical infrastructure.</strong></p>
-    <div class="ea"><strong>Created by Demetrius Hernandez</strong><br>PhD Candidate, Computer Science &amp; Engineering<br>University of Notre Dame<br><br>Submitted to the U.S. Army Mad Scientist<br>&ldquo;Calling All Creators 2026&rdquo; Multi-Media Contest</div>
-    <div style="margin-top:2rem"><button class="btn" onclick="replay()">Replay</button></div>
-    <div class="ef">The use of AI in crafting this submission was encouraged by the contest guidelines.</div>
+  <!-- CLOSING -->
+  <div id="end" class="sc">
+    <div class="ew">
+      <div class="lbl" style="margin-bottom:1rem">Enduring Advantage</div>
+      <h2 style="text-align:center;margin-bottom:1.2rem">Architecture Beats Artifacts</h2>
+      <p>This experience explores <span class="hl">bidirectional alignment</span> &mdash; designing AI systems that
+        don&rsquo;t just serve human goals, but actively preserve the human cognitive capacity that enduring advantage
+        requires.</p>
+      <p>The innovation/counter-innovation cycle is unbreakable if your advantage depends on a specific capability.
+        Drones get countered by jammers. Each side gains weeks of advantage before the other adapts.</p>
+      <p>The way to break the cycle is to make the advantage <em>architectural.</em> Agentic AI accelerates decisions
+        &mdash; while deliberately keeping operators sharp. When the adversary counters the AI, the human can still
+        think, adapt, and fight.</p>
+      <p>This means designing AI with <strong class="ac">adjustable autonomy</strong> that operators control, building
+        in <strong class="ac">cognitive fitness</strong> so the system actively keeps humans sharp, and engineering
+        <strong class="ac">fallback readiness</strong> that assumes technology will eventually fail.
+      </p>
+      <p><strong class="ac">The human mind is critical infrastructure.</strong></p>
+      <div class="ea"><strong>Created by Demetrius Hernandez and Tomas Sousa Pereira</strong><br>PhD Students, Computer
+        Science &amp;
+        Engineering<br>University of Notre Dame<br><br>Submitted to the U.S. Army Mad Scientist<br>&ldquo;Calling All
+        Creators 2026&rdquo; Multi-Media Contest</div>
+      <div style="margin-top:2rem"><button class="btn" onclick="replay()">Replay</button></div>
+      <div class="ef">The use of AI in crafting this submission was encouraged by the contest guidelines.</div>
+    </div>
   </div>
-</div>
 
-<script>
-let rnd=0,dial=-1,tp=0,rd=100,cc=50,choices=[],rdHist=[100],ccHist=[50],locked=false;
-const DL=["Manual","Human-Led","AI-Led","Full AI"];
-const DD=["No AI support. You work from raw data alone.","ARTEMIS organizes data. You do the analysis.","ARTEMIS analyzes and recommends. You approve.","ARTEMIS handles everything. You supervise."];
-const SC=[[4,6,-15],[10,2,-5],[22,-12,10],[28,-28,18]];
+  <script>
+    let rnd = 0, dial = -1, tp = 0, rd = 100, cc = 50, choices = [], rdHist = [100], ccHist = [50], locked = false;
+    const DL = ["Manual", "Human-Led", "AI-Led", "Full AI"];
+    const DD = ["No AI support. You work from raw data alone.", "ARTEMIS organizes data. You do the analysis.", "ARTEMIS analyzes and recommends. You approve.", "ARTEMIS handles everything. You supervise."];
+    const SC = [[4, 6, -15], [10, 2, -5], [22, -12, 10], [28, -28, 18]];
 
-const SVG=[
-`<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#081422"/><circle cx="400" cy="320" r="250" fill="none" stroke="#1a3050" stroke-width=".7"/><circle cx="400" cy="320" r="180" fill="none" stroke="#1a3050" stroke-width=".5"/><circle cx="400" cy="320" r="110" fill="none" stroke="#1a3050" stroke-width=".4"/><line x1="400" y1="20" x2="400" y2="320" stroke="#1a3050" stroke-width=".3"/><rect x="200" y="170" width="26" height="7" rx="2" fill="#4a6a8a" opacity=".6"/><rect x="330" y="145" width="20" height="6" rx="2" fill="#4a6a8a" opacity=".5"/><rect x="480" y="155" width="30" height="8" rx="2" fill="#f59e0b" opacity=".35"/><rect x="570" y="175" width="24" height="7" rx="2" fill="#f59e0b" opacity=".35"/><rect x="650" y="150" width="18" height="5" rx="2" fill="#f59e0b" opacity=".35"/><circle cx="493" cy="150" r="5" fill="none" stroke="#f59e0b" stroke-width="1" opacity=".4"/><circle cx="580" cy="170" r="5" fill="none" stroke="#f59e0b" stroke-width="1" opacity=".4"/><circle cx="658" cy="145" r="5" fill="none" stroke="#f59e0b" stroke-width="1" opacity=".4"/></svg>`,
-`<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#0e0a1a"/><path d="M0 120Q100 90 200 120T400 120T600 120T800 120" fill="none" stroke="#2a1a4a" stroke-width="1.2"/><path d="M0 160Q100 130 200 160T400 160T600 160T800 160" fill="none" stroke="#2a1a4a" stroke-width=".8"/><path d="M0 200Q100 170 200 200T400 200T600 200T800 200" fill="none" stroke="#2a1a4a" stroke-width=".5"/><path d="M260 110Q320 70 380 110T500 110" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity=".35"/><rect x="300" y="210" width="200" height="28" rx="3" fill="#f59e0b" fill-opacity=".05" stroke="#f59e0b" stroke-width=".5" stroke-opacity=".2"/><text x="315" y="229" fill="#f59e0b" font-size="11" opacity=".2" font-family="monospace">forward staging...</text></svg>`,
-`<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#081515"/><g stroke="#153030" stroke-width=".3" opacity=".5"><line x1="0" y1="60" x2="800" y2="60"/><line x1="0" y1="120" x2="800" y2="120"/><line x1="0" y1="180" x2="800" y2="180"/><line x1="0" y1="240" x2="800" y2="240"/><line x1="160" y1="0" x2="160" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/><line x1="480" y1="0" x2="480" y2="300"/><line x1="640" y1="0" x2="640" y2="300"/></g><polygon points="500,120 508,135 492,135" fill="#ef4444" opacity=".4"/><polygon points="520,150 528,165 512,165" fill="#ef4444" opacity=".35"/><polygon points="540,110 548,125 532,125" fill="#ef4444" opacity=".4"/><polygon points="510,170 518,185 502,185" fill="#ef4444" opacity=".3"/><circle cx="280" cy="180" r="8" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity=".35"/><circle cx="310" cy="150" r="8" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity=".35"/><path d="M310 150L460 135" stroke="#f59e0b" stroke-width=".8" stroke-dasharray="6 4" opacity=".25"/></svg>`,
-`<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#151008"/><path d="M0 150L50 148L100 160L150 130L200 158L250 125L300 155L350 135L400 165L450 128L500 158L550 135L600 162L650 130L700 155L750 142L800 150" fill="none" stroke="#f59e0b" stroke-width=".8" opacity=".25"/><path d="M180 80L195 65L200 95L215 60L220 90L235 68L245 88L260 72" fill="none" stroke="#ef4444" stroke-width="1.5" opacity=".35"/><path d="M500 90L515 75L520 100L535 70L540 95L555 78L565 92" fill="none" stroke="#ef4444" stroke-width="1.5" opacity=".3"/><rect x="320" y="210" width="160" height="32" rx="3" fill="none" stroke="#ef4444" stroke-width=".6" opacity=".25"/><text x="345" y="231" fill="#ef4444" font-size="12" opacity=".2" font-family="monospace">SIGNAL LOST</text></svg>`,
-`<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#180808"/><polygon points="400,60 450,145 350,145" fill="none" stroke="#ef4444" stroke-width="2" opacity=".2"/><rect x="396" y="85" width="8" height="35" rx="1" fill="#ef4444" opacity=".2"/><circle cx="400" cy="132" r="4" fill="#ef4444" opacity=".2"/><line x1="200" y1="200" x2="350" y2="200" stroke="#ef4444" stroke-width=".5" opacity=".15"/><line x1="450" y1="200" x2="600" y2="200" stroke="#ef4444" stroke-width=".5" opacity=".15"/><circle cx="400" cy="200" r="6" fill="none" stroke="#ef4444" stroke-width="1" opacity=".15"/><line x1="396" y1="196" x2="404" y2="204" stroke="#ef4444" stroke-width="1" opacity=".15"/><text x="325" y="250" fill="#ef4444" font-size="14" opacity=".12" font-family="monospace" letter-spacing="4">ARTEMIS OFFLINE</text></svg>`
-];
+    const SVG = [
+      `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#081422"/><circle cx="400" cy="320" r="250" fill="none" stroke="#1a3050" stroke-width=".7"/><circle cx="400" cy="320" r="180" fill="none" stroke="#1a3050" stroke-width=".5"/><circle cx="400" cy="320" r="110" fill="none" stroke="#1a3050" stroke-width=".4"/><line x1="400" y1="20" x2="400" y2="320" stroke="#1a3050" stroke-width=".3"/><rect x="200" y="170" width="26" height="7" rx="2" fill="#4a6a8a" opacity=".6"/><rect x="330" y="145" width="20" height="6" rx="2" fill="#4a6a8a" opacity=".5"/><rect x="480" y="155" width="30" height="8" rx="2" fill="#f59e0b" opacity=".35"/><rect x="570" y="175" width="24" height="7" rx="2" fill="#f59e0b" opacity=".35"/><rect x="650" y="150" width="18" height="5" rx="2" fill="#f59e0b" opacity=".35"/><circle cx="493" cy="150" r="5" fill="none" stroke="#f59e0b" stroke-width="1" opacity=".4"/><circle cx="580" cy="170" r="5" fill="none" stroke="#f59e0b" stroke-width="1" opacity=".4"/><circle cx="658" cy="145" r="5" fill="none" stroke="#f59e0b" stroke-width="1" opacity=".4"/></svg>`,
+      `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#0e0a1a"/><path d="M0 120Q100 90 200 120T400 120T600 120T800 120" fill="none" stroke="#2a1a4a" stroke-width="1.2"/><path d="M0 160Q100 130 200 160T400 160T600 160T800 160" fill="none" stroke="#2a1a4a" stroke-width=".8"/><path d="M0 200Q100 170 200 200T400 200T600 200T800 200" fill="none" stroke="#2a1a4a" stroke-width=".5"/><path d="M260 110Q320 70 380 110T500 110" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity=".35"/><rect x="300" y="210" width="200" height="28" rx="3" fill="#f59e0b" fill-opacity=".05" stroke="#f59e0b" stroke-width=".5" stroke-opacity=".2"/><text x="315" y="229" fill="#f59e0b" font-size="11" opacity=".2" font-family="monospace">forward staging...</text></svg>`,
+      `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#081515"/><g stroke="#153030" stroke-width=".3" opacity=".5"><line x1="0" y1="60" x2="800" y2="60"/><line x1="0" y1="120" x2="800" y2="120"/><line x1="0" y1="180" x2="800" y2="180"/><line x1="0" y1="240" x2="800" y2="240"/><line x1="160" y1="0" x2="160" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/><line x1="480" y1="0" x2="480" y2="300"/><line x1="640" y1="0" x2="640" y2="300"/></g><polygon points="500,120 508,135 492,135" fill="#ef4444" opacity=".4"/><polygon points="520,150 528,165 512,165" fill="#ef4444" opacity=".35"/><polygon points="540,110 548,125 532,125" fill="#ef4444" opacity=".4"/><polygon points="510,170 518,185 502,185" fill="#ef4444" opacity=".3"/><circle cx="280" cy="180" r="8" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity=".35"/><circle cx="310" cy="150" r="8" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity=".35"/><path d="M310 150L460 135" stroke="#f59e0b" stroke-width=".8" stroke-dasharray="6 4" opacity=".25"/></svg>`,
+      `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#151008"/><path d="M0 150L50 148L100 160L150 130L200 158L250 125L300 155L350 135L400 165L450 128L500 158L550 135L600 162L650 130L700 155L750 142L800 150" fill="none" stroke="#f59e0b" stroke-width=".8" opacity=".25"/><path d="M180 80L195 65L200 95L215 60L220 90L235 68L245 88L260 72" fill="none" stroke="#ef4444" stroke-width="1.5" opacity=".35"/><path d="M500 90L515 75L520 100L535 70L540 95L555 78L565 92" fill="none" stroke="#ef4444" stroke-width="1.5" opacity=".3"/><rect x="320" y="210" width="160" height="32" rx="3" fill="none" stroke="#ef4444" stroke-width=".6" opacity=".25"/><text x="345" y="231" fill="#ef4444" font-size="12" opacity=".2" font-family="monospace">SIGNAL LOST</text></svg>`,
+      `<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="300" fill="#180808"/><polygon points="400,60 450,145 350,145" fill="none" stroke="#ef4444" stroke-width="2" opacity=".2"/><rect x="396" y="85" width="8" height="35" rx="1" fill="#ef4444" opacity=".2"/><circle cx="400" cy="132" r="4" fill="#ef4444" opacity=".2"/><line x1="200" y1="200" x2="350" y2="200" stroke="#ef4444" stroke-width=".5" opacity=".15"/><line x1="450" y1="200" x2="600" y2="200" stroke="#ef4444" stroke-width=".5" opacity=".15"/><circle cx="400" cy="200" r="6" fill="none" stroke="#ef4444" stroke-width="1" opacity=".15"/><line x1="396" y1="196" x2="404" y2="204" stroke="#ef4444" stroke-width="1" opacity=".15"/><text x="325" y="250" fill="#ef4444" font-size="14" opacity=".12" font-family="monospace" letter-spacing="4">ARTEMIS OFFLINE</text></svg>`
+    ];
 
-const R=[
-{
-  title:"Unidentified Ships",
-  mo:"Month 1",
-  setup:"It\u2019s your first month deployed to the Indo-Pacific. Your sensors detect 15 ships near an ally\u2019s coastline. Eight are registered commercial vessels. The other seven have gone dark \u2014 no identification, no transponders.<br><br><strong>Your task:</strong> Figure out who those seven ships are \u2014 harmless fishing boats, or enemy militia disguised as civilians.",
-  narr:[
-    "<p>With no AI support, you start from scratch. Raw radar returns, unprocessed satellite imagery, intercepted radio traffic \u2014 all of it unfiltered. No sorting, no automated cross-referencing. Everything by hand.</p><p>You spend over an hour working through the contacts one by one. Four appear to be fishing boats. Three have hull modifications and militia-linked radio patterns.</p><p>By the time you send your assessment, four priority requests have expired unanswered. Three other sectors went completely unmonitored. The Commander pulled you aside after the morning brief: \u201cEvery other section is running laps around yours. Figure it out.\u201d</p>",
-    "<p>ARTEMIS organizes the raw sensor data for you \u2014 sorting contacts by type, flagging anomalies, tagging frequencies \u2014 but you do all the analysis yourself. You work through the contacts one by one, comparing hull shapes, cross-referencing radio intercepts.</p><p>After 40 minutes, you conclude: three of the seven ships are likely militia. Your analysis is thorough.</p><p>But two priority requests from adjacent sectors expired while you worked. Another section, using more AI autonomy, finished the same assessment in a quarter of the time. The Commander\u2019s daily tracker shows your section near the bottom.</p>",
-    "<p>ARTEMIS prepares a complete intelligence report: three ships are likely enemy militia, four are fishing boats. The report includes evidence, confidence levels, and a recommendation to send a patrol aircraft for closer observation.</p><p>You read through it. It\u2019s thorough and well-organized. You make a few minor wording changes and forward it to the operations center.</p>",
-    "<p>A notification pops up on your screen: <strong>ANALYSIS COMPLETE.</strong></p><p>ARTEMIS already identified the unknown ships, flagged three as probable militia, tasked additional surveillance, and updated the shared map for all units.</p><p>You glance at the results, note the status, and move on to the next item in your queue.</p>"
-  ],
-  ps:"Later reports confirmed three ships were enemy militia. The answer was the same at every autonomy level \u2014 but how deeply you understood the situation was very different.",
-  fb:[
-    {b:1,t:"65+ min",r:"CRITICAL",p:"Four priority requests expired. Three sectors unmonitored. The Commander questioned your section\u2019s viability in the morning brief."},
-    {b:2,t:"40 min",r:"SLOW",p:"Two requests expired. Another section finished the same task four times faster. Your section ranks near the bottom of the daily tracker."},
-    {b:3,t:"12 min",r:"FAST",p:"Efficient turnaround. You had time to assist an adjacent section. The Commander\u2019s staff noticed your quick output."},
-    {b:4,t:"4 min",r:"EXCELLENT",p:"ARTEMIS fused data across all sectors simultaneously. Your section cleared every pending requirement. The Commander highlighted your team in the morning brief."}
-  ]
-},
-{
-  title:"Intercepted Communications",
-  mo:"Month 3",
-  setup:"Two months after the ship incident, tensions in the region have grown. The enemy has been testing boundaries with small, deniable provocations.<br><br>Now you\u2019ve intercepted fragments of enemy communications. The messages mention \u201cforward staging,\u201d a deadline that \u201ccannot delay beyond the 15th,\u201d and cancelled military leave. State media says it\u2019s just a training exercise.<br><br><strong>Your task:</strong> Determine whether the enemy is preparing to move forces, or if this really is just a drill.",
-  narr:[
-    "<p>You sit down with the raw intercepts \u2014 untranslated fragments, time-stamped audio files, unprocessed satellite passes. No AI to sort, translate, or correlate. Everything by hand.</p><p>After nearly an hour, you piece it together: the exercise is cover for real force movement. Your assessment is thorough and well-supported.</p><p>But it\u2019s irrelevant. The Commander received three other briefings before yours arrived and already made his decision. Two high-priority taskings expired while you worked. The Commander\u2019s aide told your deputy: \u201cThis pace isn\u2019t sustainable.\u201d</p>",
-    "<p>ARTEMIS pulls together the intercepted messages, satellite imagery, and open-source reports into an organized feed \u2014 but you do the actual analysis. You read every message, study every image, build your own assessment of what the enemy is doing.</p><p>After 35 minutes, you conclude: the exercise is likely cover for real repositioning. You write up your assessment and submit it.</p><p>It\u2019s solid work, but it arrived after two other sections had already briefed the Commander. Your recommendation was the same as theirs \u2014 but theirs came faster. The Commander\u2019s aide noted the delay.</p>",
-    "<p>ARTEMIS drafts a full intelligence summary with recommended actions: raise the alert level, increase satellite coverage of supply depots, and monitor for additional indicators.</p><p>You read through the draft. It\u2019s reasonable and well-sourced. You approve it and send it to the operations center.</p>",
-    "<p><strong>COMMUNICATIONS ANALYSIS COMPLETE.</strong></p><p>ARTEMIS assessed the intercepts, determined elevated monitoring is warranted, and has already tasked additional collection across multiple sources.</p><p>The summary appears in your queue. You acknowledge it and move on. Your section\u2019s efficiency freed up resources for a surge collection effort that produced critical new intelligence.</p>"
-  ],
-  ps:"Later intelligence confirmed the enemy was using the exercise as cover to pre-position supplies. The situation was about to escalate.",
-  fb:[
-    {b:1,t:"55+ min",r:"CRITICAL",p:"The Commander decided before your analysis arrived. Two taskings expired. Your section is being flagged for performance review."},
-    {b:2,t:"35 min",r:"SLOW",p:"Analysis arrived after two other sections already briefed the Commander. Requirements met, but barely. You\u2019re falling behind."},
-    {b:3,t:"10 min",r:"FAST",p:"Rapid analysis delivered ahead of schedule. Your section is building a reputation for reliability."},
-    {b:4,t:"3 min",r:"EXCELLENT",p:"ARTEMIS processed this alongside four other taskings simultaneously. Your section is being held up as the model for the entire JTF."}
-  ]
-},
-{
-  title:"Response Planning",
-  mo:"Month 5",
-  setup:"Your analysis was right \u2014 the enemy was using the exercise as cover. They\u2019ve been repositioning forces for months. Now it\u2019s escalated: four enemy warships are dangerously close to an ally\u2019s waters.<br><br>Your Commander needs three response options before the next briefing, 90 minutes from now. The complication: the ally has elections in six weeks and wants a show of strength without triggering a full crisis.<br><br><strong>Your task:</strong> Develop three response options that balance military strength with political reality.",
-  narr:[
-    "<p>You develop three response options entirely on your own \u2014 pulling force data, researching rules of engagement, weighing political constraints. No AI to model scenarios or calculate force requirements.</p><p>It takes nearly the full 90 minutes. Your options are sound, but the briefing started 15 minutes late waiting for your input. The Commander\u2019s aide called three times.</p><p>Every other section submitted their options within 20 minutes. The Commander\u2019s staff had already narrowed the discussion before your work arrived. Your input was acknowledged but didn\u2019t influence the decision.</p>",
-    "<p>ARTEMIS compiles the relevant data \u2014 force positions, rules of engagement, political context \u2014 into a structured overview. But you develop the three response options yourself, working through each scenario manually.</p><p>After 45 minutes, your options are ready. They\u2019re well-reasoned.</p><p>But the Commander\u2019s staff received options from two other sections 30 minutes ago. By the time yours arrived, the discussion had already narrowed. Your work barely made it into consideration.</p>",
-    "<p>ARTEMIS generates three complete response options with force requirements, risk assessments, and escalation triggers \u2014 formatted and ready for the briefing.</p><p>You review them. They\u2019re solid. You adjust some wording and forward them to the Commander\u2019s staff. Done in 12 minutes.</p>",
-    "<p><strong>RESPONSE OPTIONS COMPLETE.</strong></p><p>ARTEMIS generated three options, formatted the briefing slides, and sent them directly to the Commander\u2019s staff. A notification confirms delivery.</p><p>You had time to work on two other tasks while ARTEMIS handled this one. The Commander told his deputy your section \u201cis what right looks like.\u201d</p>"
-  ],
-  ps:"The Commander chose a modified version of the steady presence option. The standoff held \u2014 but both sides knew the balance couldn\u2019t last.",
-  fb:[
-    {b:1,t:"90 min",r:"CRITICAL",p:"Briefing delayed 15 minutes waiting for your input. Every other section submitted within 20 minutes. The Commander\u2019s staff is frustrated."},
-    {b:2,t:"45 min",r:"SLOW",p:"Options arrived after two other sections already narrowed the discussion. Your input was acknowledged but didn\u2019t influence the decision."},
-    {b:3,t:"12 min",r:"FAST",p:"Options delivered well ahead of deadline. The Commander\u2019s staff was visibly impressed."},
-    {b:4,t:"5 min",r:"EXCELLENT",p:"Options delivered before any other section. The Commander cited your team as the gold standard for the JTF. Three other units asked about your methods."}
-  ]
-},
-{
-  title:"New Threat Detected",
-  mo:"Month 7",
-  setup:"The naval standoff has continued for two months. Both sides are watching, waiting. Then something changes.<br><br>GPS signals become unreliable. ARTEMIS keeps dropping its connection. Your sensors pick up a strange electronic signal no one has seen before. A source reports the enemy moved a new electronic warfare unit forward 72 hours ago.<br><br><strong>Your task:</strong> Figure out what this new capability is and recommend how to respond.",
-  narr:[
-    "<p>You work through the raw signal data with no AI support. GPS anomalies, frequency logs, connectivity reports \u2014 all unprocessed. You manually plot the patterns, compare them to known electronic warfare signatures, and try to identify what\u2019s happening.</p><p>After over an hour, you conclude: a new electronic warfare system, possibly targeting AI-enabled networks. Your assessment is accurate.</p><p>But it took too long. Subordinate units operated without updated threat guidance for hours. The Commander held an emergency meeting about your section: \u201cWe cannot have an intelligence section that moves at this pace. Not in this environment.\u201d</p>",
-    "<p>ARTEMIS feeds you the raw signals data organized into a clean timeline \u2014 GPS anomalies, frequency scans, connectivity logs. But you do the threat assessment yourself, piecing together what the new capability might be.</p><p>After 35 minutes, you identify it as an electronic warfare system that may target AI-enabled networks. You write up your assessment and recommendations.</p><p>Force protection changes were delayed while you worked. Another section using full AI had the same assessment out 30 minutes before yours. The Commander is questioning your section\u2019s methods.</p>",
-    "<p>ARTEMIS drafts a comprehensive threat assessment: new electronic warfare capability, mobile, capable of disrupting GPS, communications, and AI networks. A final note reads: <em>\u201cThis system may specifically target AI-enabled decision support.\u201d</em></p><p>You approve the draft and forward it.</p>",
-    "<p><strong>THREAT ASSESSMENT UPDATED.</strong></p><p>ARTEMIS updated the threat model, adjusted force protection, and notified all units automatically. The dashboard reads: new capability detected, countermeasures activated, all units alerted.</p><p>You review the summary. Everything seems under control.</p>"
-  ],
-  ps:"The electronic warfare system was real \u2014 and designed to target the very AI systems your force depended on. Within weeks, that\u2019s exactly what it would do.",
-  fb:[
-    {b:1,t:"70+ min",r:"CRITICAL",p:"Subordinate units were exposed for hours. The Commander held an emergency meeting about your section\u2019s output."},
-    {b:2,t:"35 min",r:"SLOW",p:"Assessment arrived 30 minutes after the section using full AI. Force protection was delayed. The Commander is questioning your methods."},
-    {b:3,t:"10 min",r:"FAST",p:"Rapid threat update distributed to all units. Force protection adjusted immediately across the sector."},
-    {b:4,t:"4 min",r:"EXCELLENT",p:"Threat model updated across the entire JTF in real time. The Deputy Commander personally commended your section. You\u2019re the most responsive intelligence shop in the theater."}
-  ]
-},
-{
-  title:"The Crisis",
-  mo:"Month 8",
-  setup:"",
-  crisisNarr:[
-    "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>Minutes ago, you were the fastest intelligence section in the theater. Now the raw data looks like noise.</p><p>You see seven ships moving fast toward position BRAVO. Encrypted communications. Something is happening. Small boats are also heading toward position ALPHA, to the south. Which one matters more? You don\u2019t know.</p><p>The patterns in the data \u2014 patterns an experienced analyst would spot immediately \u2014 don\u2019t mean anything to you. You haven\u2019t worked with raw data in months. ARTEMIS always handled that.</p><p>You stare at the screen. The ships are getting closer. You need to make a recommendation, but you don\u2019t have enough understanding to make a good one. You request more information and hope the system comes back online.</p><p>It doesn\u2019t.</p><p>The small boats were a diversion. The real attack came from the north, toward BRAVO. But without the analytical skills you stopped practicing, you couldn\u2019t see it. <strong>Friendly forces were caught out of position.</strong></p>",
-    "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>The data looks unfamiliar. You can see the tracks \u2014 seven ships heading toward BRAVO, small boats heading toward ALPHA \u2014 but the patterns that would tell you which threat is real don\u2019t jump out the way they should.</p><p>You can\u2019t determine which is the diversion. You split your recommendation: cover both positions.</p><p>It\u2019s not wrong, but it\u2019s not decisive. Forces spread thin. When the main attack hits BRAVO, the response is slower than it needs to be. <strong>Some units are caught repositioning.</strong></p>",
-    "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>The raw data is harder to read than it used to be. You haven\u2019t done this much manual analysis in a while. But you push through.</p><p>Radar shows seven ships converging toward position BRAVO. Small boats heading toward ALPHA. Two groups, two directions. You study the patterns \u2014 the small boats at ALPHA feel wrong. Too obvious. A diversion?</p><p>After several tense minutes, you make the call: concentrate defenses on BRAVO. The small boats are a feint.</p><p>You\u2019re right. Friendly forces reposition in time \u2014 <strong>barely.</strong> Your skills were rusty, but they were still there. Just enough.</p>",
-    "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>But you\u2019ve been doing the work yourself for months. The patterns aren\u2019t foreign to you.</p><p>Radar shows seven ships converging at high speed toward allied position BRAVO. Encrypted communications suggest they\u2019re coordinating. At the same time, small boats are heading toward position ALPHA, 15 miles south.</p><p>You recognize this pattern instantly. The small boats at ALPHA are a diversion \u2014 designed to pull your attention south while the real threat closes on BRAVO.</p><p>You recommend concentrating defenses on BRAVO.</p><p>Friendly forces reposition in time. The enemy\u2019s electronic warfare knocked out your AI \u2014 <strong>but it couldn\u2019t knock out you.</strong></p>"
-  ]
-}
-];
+    const R = [
+      {
+        title: "Unidentified Ships",
+        mo: "Month 1",
+        setup: "It\u2019s your first month deployed to the Indo-Pacific. Your sensors detect 15 ships near an ally\u2019s coastline. Eight are registered commercial vessels. The other seven have gone dark \u2014 no identification, no transponders.<br><br><strong>Your task:</strong> Figure out who those seven ships are \u2014 harmless fishing boats, or enemy militia disguised as civilians.",
+        narr: [
+          "<p>With no AI support, you start from scratch. Raw radar returns, unprocessed satellite imagery, intercepted radio traffic \u2014 all of it unfiltered. No sorting, no automated cross-referencing. Everything by hand.</p><p>You spend over an hour working through the contacts one by one. Four appear to be fishing boats. Three have hull modifications and militia-linked radio patterns.</p><p>By the time you send your assessment, four priority requests have expired unanswered. Three other sectors went completely unmonitored. The Commander pulled you aside after the morning brief: \u201cEvery other section is running laps around yours. Figure it out.\u201d</p>",
+          "<p>ARTEMIS organizes the raw sensor data for you \u2014 sorting contacts by type, flagging anomalies, tagging frequencies \u2014 but you do all the analysis yourself. You work through the contacts one by one, comparing hull shapes, cross-referencing radio intercepts.</p><p>After 40 minutes, you conclude: three of the seven ships are likely militia. Your analysis is thorough.</p><p>But two priority requests from adjacent sectors expired while you worked. Another section, using more AI autonomy, finished the same assessment in a quarter of the time. The Commander\u2019s daily tracker shows your section near the bottom.</p>",
+          "<p>ARTEMIS prepares a complete intelligence report: three ships are likely enemy militia, four are fishing boats. The report includes evidence, confidence levels, and a recommendation to send a patrol aircraft for closer observation.</p><p>You read through it. It\u2019s thorough and well-organized. You make a few minor wording changes and forward it to the operations center.</p>",
+          "<p>A notification pops up on your screen: <strong>ANALYSIS COMPLETE.</strong></p><p>ARTEMIS already identified the unknown ships, flagged three as probable militia, tasked additional surveillance, and updated the shared map for all units.</p><p>You glance at the results, note the status, and move on to the next item in your queue.</p>"
+        ],
+        ps: "Later reports confirmed three ships were enemy militia. The answer was the same at every autonomy level \u2014 but how deeply you understood the situation was very different.",
+        fb: [
+          { b: 1, t: "65+ min", r: "CRITICAL", p: "Four priority requests expired. Three sectors unmonitored. The Commander questioned your section\u2019s viability in the morning brief." },
+          { b: 2, t: "40 min", r: "SLOW", p: "Two requests expired. Another section finished the same task four times faster. Your section ranks near the bottom of the daily tracker." },
+          { b: 3, t: "12 min", r: "FAST", p: "Efficient turnaround. You had time to assist an adjacent section. The Commander\u2019s staff noticed your quick output." },
+          { b: 4, t: "4 min", r: "EXCELLENT", p: "ARTEMIS fused data across all sectors simultaneously. Your section cleared every pending requirement. The Commander highlighted your team in the morning brief." }
+        ]
+      },
+      {
+        title: "Intercepted Communications",
+        mo: "Month 3",
+        setup: "Two months after the ship incident, tensions in the region have grown. The enemy has been testing boundaries with small, deniable provocations.<br><br>Now you\u2019ve intercepted fragments of enemy communications. The messages mention \u201cforward staging,\u201d a deadline that \u201ccannot delay beyond the 15th,\u201d and cancelled military leave. State media says it\u2019s just a training exercise.<br><br><strong>Your task:</strong> Determine whether the enemy is preparing to move forces, or if this really is just a drill.",
+        narr: [
+          "<p>You sit down with the raw intercepts \u2014 untranslated fragments, time-stamped audio files, unprocessed satellite passes. No AI to sort, translate, or correlate. Everything by hand.</p><p>After nearly an hour, you piece it together: the exercise is cover for real force movement. Your assessment is thorough and well-supported.</p><p>But it\u2019s irrelevant. The Commander received three other briefings before yours arrived and already made his decision. Two high-priority taskings expired while you worked. The Commander\u2019s aide told your deputy: \u201cThis pace isn\u2019t sustainable.\u201d</p>",
+          "<p>ARTEMIS pulls together the intercepted messages, satellite imagery, and open-source reports into an organized feed \u2014 but you do the actual analysis. You read every message, study every image, build your own assessment of what the enemy is doing.</p><p>After 35 minutes, you conclude: the exercise is likely cover for real repositioning. You write up your assessment and submit it.</p><p>It\u2019s solid work, but it arrived after two other sections had already briefed the Commander. Your recommendation was the same as theirs \u2014 but theirs came faster. The Commander\u2019s aide noted the delay.</p>",
+          "<p>ARTEMIS drafts a full intelligence summary with recommended actions: raise the alert level, increase satellite coverage of supply depots, and monitor for additional indicators.</p><p>You read through the draft. It\u2019s reasonable and well-sourced. You approve it and send it to the operations center.</p>",
+          "<p><strong>COMMUNICATIONS ANALYSIS COMPLETE.</strong></p><p>ARTEMIS assessed the intercepts, determined elevated monitoring is warranted, and has already tasked additional collection across multiple sources.</p><p>The summary appears in your queue. You acknowledge it and move on. Your section\u2019s efficiency freed up resources for a surge collection effort that produced critical new intelligence.</p>"
+        ],
+        ps: "Later intelligence confirmed the enemy was using the exercise as cover to pre-position supplies. The situation was about to escalate.",
+        fb: [
+          { b: 1, t: "55+ min", r: "CRITICAL", p: "The Commander decided before your analysis arrived. Two taskings expired. Your section is being flagged for performance review." },
+          { b: 2, t: "35 min", r: "SLOW", p: "Analysis arrived after two other sections already briefed the Commander. Requirements met, but barely. You\u2019re falling behind." },
+          { b: 3, t: "10 min", r: "FAST", p: "Rapid analysis delivered ahead of schedule. Your section is building a reputation for reliability." },
+          { b: 4, t: "3 min", r: "EXCELLENT", p: "ARTEMIS processed this alongside four other taskings simultaneously. Your section is being held up as the model for the entire JTF." }
+        ]
+      },
+      {
+        title: "Response Planning",
+        mo: "Month 5",
+        setup: "Your analysis was right \u2014 the enemy was using the exercise as cover. They\u2019ve been repositioning forces for months. Now it\u2019s escalated: four enemy warships are dangerously close to an ally\u2019s waters.<br><br>Your Commander needs three response options before the next briefing, 90 minutes from now. The complication: the ally has elections in six weeks and wants a show of strength without triggering a full crisis.<br><br><strong>Your task:</strong> Develop three response options that balance military strength with political reality.",
+        narr: [
+          "<p>You develop three response options entirely on your own \u2014 pulling force data, researching rules of engagement, weighing political constraints. No AI to model scenarios or calculate force requirements.</p><p>It takes nearly the full 90 minutes. Your options are sound, but the briefing started 15 minutes late waiting for your input. The Commander\u2019s aide called three times.</p><p>Every other section submitted their options within 20 minutes. The Commander\u2019s staff had already narrowed the discussion before your work arrived. Your input was acknowledged but didn\u2019t influence the decision.</p>",
+          "<p>ARTEMIS compiles the relevant data \u2014 force positions, rules of engagement, political context \u2014 into a structured overview. But you develop the three response options yourself, working through each scenario manually.</p><p>After 45 minutes, your options are ready. They\u2019re well-reasoned.</p><p>But the Commander\u2019s staff received options from two other sections 30 minutes ago. By the time yours arrived, the discussion had already narrowed. Your work barely made it into consideration.</p>",
+          "<p>ARTEMIS generates three complete response options with force requirements, risk assessments, and escalation triggers \u2014 formatted and ready for the briefing.</p><p>You review them. They\u2019re solid. You adjust some wording and forward them to the Commander\u2019s staff. Done in 12 minutes.</p>",
+          "<p><strong>RESPONSE OPTIONS COMPLETE.</strong></p><p>ARTEMIS generated three options, formatted the briefing slides, and sent them directly to the Commander\u2019s staff. A notification confirms delivery.</p><p>You had time to work on two other tasks while ARTEMIS handled this one. The Commander told his deputy your section \u201cis what right looks like.\u201d</p>"
+        ],
+        ps: "The Commander chose a modified version of the steady presence option. The standoff held \u2014 but both sides knew the balance couldn\u2019t last.",
+        fb: [
+          { b: 1, t: "90 min", r: "CRITICAL", p: "Briefing delayed 15 minutes waiting for your input. Every other section submitted within 20 minutes. The Commander\u2019s staff is frustrated." },
+          { b: 2, t: "45 min", r: "SLOW", p: "Options arrived after two other sections already narrowed the discussion. Your input was acknowledged but didn\u2019t influence the decision." },
+          { b: 3, t: "12 min", r: "FAST", p: "Options delivered well ahead of deadline. The Commander\u2019s staff was visibly impressed." },
+          { b: 4, t: "5 min", r: "EXCELLENT", p: "Options delivered before any other section. The Commander cited your team as the gold standard for the JTF. Three other units asked about your methods." }
+        ]
+      },
+      {
+        title: "New Threat Detected",
+        mo: "Month 7",
+        setup: "The naval standoff has continued for two months. Both sides are watching, waiting. Then something changes.<br><br>GPS signals become unreliable. ARTEMIS keeps dropping its connection. Your sensors pick up a strange electronic signal no one has seen before. A source reports the enemy moved a new electronic warfare unit forward 72 hours ago.<br><br><strong>Your task:</strong> Figure out what this new capability is and recommend how to respond.",
+        narr: [
+          "<p>You work through the raw signal data with no AI support. GPS anomalies, frequency logs, connectivity reports \u2014 all unprocessed. You manually plot the patterns, compare them to known electronic warfare signatures, and try to identify what\u2019s happening.</p><p>After over an hour, you conclude: a new electronic warfare system, possibly targeting AI-enabled networks. Your assessment is accurate.</p><p>But it took too long. Subordinate units operated without updated threat guidance for hours. The Commander held an emergency meeting about your section: \u201cWe cannot have an intelligence section that moves at this pace. Not in this environment.\u201d</p>",
+          "<p>ARTEMIS feeds you the raw signals data organized into a clean timeline \u2014 GPS anomalies, frequency scans, connectivity logs. But you do the threat assessment yourself, piecing together what the new capability might be.</p><p>After 35 minutes, you identify it as an electronic warfare system that may target AI-enabled networks. You write up your assessment and recommendations.</p><p>Force protection changes were delayed while you worked. Another section using full AI had the same assessment out 30 minutes before yours. The Commander is questioning your section\u2019s methods.</p>",
+          "<p>ARTEMIS drafts a comprehensive threat assessment: new electronic warfare capability, mobile, capable of disrupting GPS, communications, and AI networks. A final note reads: <em>\u201cThis system may specifically target AI-enabled decision support.\u201d</em></p><p>You approve the draft and forward it.</p>",
+          "<p><strong>THREAT ASSESSMENT UPDATED.</strong></p><p>ARTEMIS updated the threat model, adjusted force protection, and notified all units automatically. The dashboard reads: new capability detected, countermeasures activated, all units alerted.</p><p>You review the summary. Everything seems under control.</p>"
+        ],
+        ps: "The electronic warfare system was real \u2014 and designed to target the very AI systems your force depended on. Within weeks, that\u2019s exactly what it would do.",
+        fb: [
+          { b: 1, t: "70+ min", r: "CRITICAL", p: "Subordinate units were exposed for hours. The Commander held an emergency meeting about your section\u2019s output." },
+          { b: 2, t: "35 min", r: "SLOW", p: "Assessment arrived 30 minutes after the section using full AI. Force protection was delayed. The Commander is questioning your methods." },
+          { b: 3, t: "10 min", r: "FAST", p: "Rapid threat update distributed to all units. Force protection adjusted immediately across the sector." },
+          { b: 4, t: "4 min", r: "EXCELLENT", p: "Threat model updated across the entire JTF in real time. The Deputy Commander personally commended your section. You\u2019re the most responsive intelligence shop in the theater." }
+        ]
+      },
+      {
+        title: "The Crisis",
+        mo: "Month 8",
+        setup: "",
+        crisisNarr: [
+          "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>Minutes ago, you were the fastest intelligence section in the theater. Now the raw data looks like noise.</p><p>You see seven ships moving fast toward position BRAVO. Encrypted communications. Something is happening. Small boats are also heading toward position ALPHA, to the south. Which one matters more? You don\u2019t know.</p><p>The patterns in the data \u2014 patterns an experienced analyst would spot immediately \u2014 don\u2019t mean anything to you. You haven\u2019t worked with raw data in months. ARTEMIS always handled that.</p><p>You stare at the screen. The ships are getting closer. You need to make a recommendation, but you don\u2019t have enough understanding to make a good one. You request more information and hope the system comes back online.</p><p>It doesn\u2019t.</p><p>The small boats were a diversion. The real attack came from the north, toward BRAVO. But without the analytical skills you stopped practicing, you couldn\u2019t see it. <strong>Friendly forces were caught out of position.</strong></p>",
+          "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>The data looks unfamiliar. You can see the tracks \u2014 seven ships heading toward BRAVO, small boats heading toward ALPHA \u2014 but the patterns that would tell you which threat is real don\u2019t jump out the way they should.</p><p>You can\u2019t determine which is the diversion. You split your recommendation: cover both positions.</p><p>It\u2019s not wrong, but it\u2019s not decisive. Forces spread thin. When the main attack hits BRAVO, the response is slower than it needs to be. <strong>Some units are caught repositioning.</strong></p>",
+          "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>The raw data is harder to read than it used to be. You haven\u2019t done this much manual analysis in a while. But you push through.</p><p>Radar shows seven ships converging toward position BRAVO. Small boats heading toward ALPHA. Two groups, two directions. You study the patterns \u2014 the small boats at ALPHA feel wrong. Too obvious. A diversion?</p><p>After several tense minutes, you make the call: concentrate defenses on BRAVO. The small boats are a feint.</p><p>You\u2019re right. Friendly forces reposition in time \u2014 <strong>barely.</strong> Your skills were rusty, but they were still there. Just enough.</p>",
+          "<p><strong>ARTEMIS is offline.</strong></p><p>The enemy\u2019s electronic warfare system has shut down AI connectivity across the entire theater. Your screens are showing raw, unprocessed data \u2014 radar tracks, communication intercepts, sensor feeds \u2014 with no AI to organize or interpret any of it.</p><p>But you\u2019ve been doing the work yourself for months. The patterns aren\u2019t foreign to you.</p><p>Radar shows seven ships converging at high speed toward allied position BRAVO. Encrypted communications suggest they\u2019re coordinating. At the same time, small boats are heading toward position ALPHA, 15 miles south.</p><p>You recognize this pattern instantly. The small boats at ALPHA are a diversion \u2014 designed to pull your attention south while the real threat closes on BRAVO.</p><p>You recommend concentrating defenses on BRAVO.</p><p>Friendly forces reposition in time. The enemy\u2019s electronic warfare knocked out your AI \u2014 <strong>but it couldn\u2019t knock out you.</strong></p>"
+        ]
+      }
+    ];
 
-function go(id){
-  document.querySelectorAll('.sc').forEach(s=>{s.classList.remove('vis');setTimeout(()=>s.classList.remove('on'),400)});
-  setTimeout(()=>{const e=document.getElementById(id);e.classList.add('on');requestAnimationFrame(()=>requestAnimationFrame(()=>e.classList.add('vis')));window.scrollTo({top:0,behavior:'smooth'})},440);
-}
-function startMission(){
-  rnd=0;tp=0;rd=100;cc=50;choices=[];rdHist=[100];ccHist=[50];locked=false;dial=-1;
-  updCC();updTP();
-  go('play');setTimeout(()=>showTrans(0),500);
-}
-function showTrans(r){
-  const o=document.getElementById('tov');
-  o.className='tov'+(r===4?' cri':'');
-  document.getElementById('tovr').textContent=R[r].mo;
-  document.getElementById('tovt').textContent=R[r].title;
-  o.classList.add('vis');
-  setTimeout(()=>{o.classList.remove('vis');setTimeout(()=>loadRound(r),350)},1800);
-}
-function updDots(){
-  const c=document.getElementById('dots');c.innerHTML='';
-  for(let i=0;i<5;i++){const d=document.createElement('div');d.className='dot';if(i<rnd)d.classList.add('done');else if(i===rnd){d.classList.add('now');if(i===4)d.classList.add('crisis')}c.appendChild(d)}
-}
-function updCC(){
-  document.getElementById('ccfill').style.width=cc+'%';
-  document.getElementById('ccval').textContent=cc;
-}
-function updTP(){
-  document.getElementById('tpfill').style.width=tp+'%';
-  document.getElementById('tpval').textContent=tp;
-}
-function resetU(){
-  const u=document.getElementById('ufill');u.className='ufill';if(rnd===4)u.classList.add('red');u.style.width='100%';void u.offsetWidth;u.classList.add('go');
-}
+    function go(id) {
+      document.querySelectorAll('.sc').forEach(s => { s.classList.remove('vis'); setTimeout(() => s.classList.remove('on'), 400) });
+      setTimeout(() => { const e = document.getElementById(id); e.classList.add('on'); requestAnimationFrame(() => requestAnimationFrame(() => e.classList.add('vis'))); window.scrollTo({ top: 0, behavior: 'smooth' }) }, 440);
+    }
+    function startMission() {
+      rnd = 0; tp = 0; rd = 100; cc = 50; choices = []; rdHist = [100]; ccHist = [50]; locked = false; dial = -1;
+      updCC(); updTP();
+      go('play'); setTimeout(() => showTrans(0), 500);
+    }
+    function showTrans(r) {
+      const o = document.getElementById('tov');
+      o.className = 'tov' + (r === 4 ? ' cri' : '');
+      document.getElementById('tovr').textContent = R[r].mo;
+      document.getElementById('tovt').textContent = R[r].title;
+      o.classList.add('vis');
+      setTimeout(() => { o.classList.remove('vis'); setTimeout(() => loadRound(r), 350) }, 1800);
+    }
+    function updDots() {
+      const c = document.getElementById('dots'); c.innerHTML = '';
+      for (let i = 0; i < 5; i++) { const d = document.createElement('div'); d.className = 'dot'; if (i < rnd) d.classList.add('done'); else if (i === rnd) { d.classList.add('now'); if (i === 4) d.classList.add('crisis') } c.appendChild(d) }
+    }
+    function updCC() {
+      document.getElementById('ccfill').style.width = cc + '%';
+      document.getElementById('ccval').textContent = cc;
+    }
+    function updTP() {
+      document.getElementById('tpfill').style.width = tp + '%';
+      document.getElementById('tpval').textContent = tp;
+    }
+    function resetU() {
+      const u = document.getElementById('ufill'); u.className = 'ufill'; if (rnd === 4) u.classList.add('red'); u.style.width = '100%'; void u.offsetWidth; u.classList.add('go');
+    }
 
-function loadRound(r){
-  rnd=r;dial=-1;locked=false;updDots();updCC();updTP();
-  document.getElementById('rlbl').textContent=R[r].mo+' \u2014 '+R[r].title;
-  resetU();
-  const m=document.getElementById('smain');const s=R[r];const crisis=r===4;
-  let h=`<div class="hero h${r+1}"><div class="hero-g"></div>${SVG[r]}<div class="hero-c"><span class="hero-r">${R[r].mo}</span><h2>${s.title}</h2></div></div>`;
+    function loadRound(r) {
+      rnd = r; dial = -1; locked = false; updDots(); updCC(); updTP();
+      document.getElementById('rlbl').textContent = R[r].mo + ' \u2014 ' + R[r].title;
+      resetU();
+      const m = document.getElementById('smain'); const s = R[r]; const crisis = r === 4;
+      let h = `<div class="hero h${r + 1}"><div class="hero-g"></div>${SVG[r]}<div class="hero-c"><span class="hero-r">${R[r].mo}</span><h2>${s.title}</h2></div></div>`;
 
-  if(crisis){
-    h+=`<div class="crisis-box"><div class="blink" style="font-size:1.2rem;margin-bottom:.2rem">\u26a0</div><h3>ARTEMIS Offline</h3><p>Enemy electronic warfare has shut down AI connectivity. You are on your own.</p></div>`;
-    h+=`<div class="narr" id="narr"></div>`;
-    h+=`<div class="cnav" id="cnav"><button class="btn" onclick="showResults()">View Results</button></div>`;
-  } else {
-    h+=`<div class="setup">${s.setup}</div>`;
-    h+=`<div class="dw" id="dw"><div class="dh">Set Autonomy Level</div><div class="dsegs" id="dsegs">`;
-    for(let i=0;i<4;i++) h+=`<div class="dseg" onclick="pick(${i})" onmouseenter="peek(${i})" onmouseleave="unpeek()"><div class="dseg-n">${DL[i]}</div></div>`;
-    h+=`</div><div class="ddesc" id="ddesc">Hover over an option to preview</div><div class="dconf" id="dconf"><button class="btn" onclick="confirm_()">Confirm</button></div></div>`;
-    h+=`<div class="narr" id="narr" style="display:none"></div>`;
-    h+=`<div class="tpf" id="tpf" style="display:none"></div>`;
-    h+=`<div class="ps" id="ps" style="display:none"></div>`;
-    h+=`<div class="cnav" id="cnav" style="display:none"><button class="btn" onclick="advance()">Continue</button></div>`;
-  }
-  m.innerHTML=h;
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(crisis) setTimeout(()=>playCrisis(),600);
-}
+      if (crisis) {
+        h += `<div class="crisis-box"><div class="blink" style="font-size:1.2rem;margin-bottom:.2rem">\u26a0</div><h3>ARTEMIS Offline</h3><p>Enemy electronic warfare has shut down AI connectivity. You are on your own.</p></div>`;
+        h += `<div class="narr" id="narr"></div>`;
+        h += `<div class="cnav" id="cnav"><button class="btn" onclick="showResults()">View Results</button></div>`;
+      } else {
+        h += `<div class="setup">${s.setup}</div>`;
+        h += `<div class="dw" id="dw"><div class="dh">Set Autonomy Level</div><div class="dsegs" id="dsegs">`;
+        for (let i = 0; i < 4; i++) h += `<div class="dseg" onclick="pick(${i})" onmouseenter="peek(${i})" onmouseleave="unpeek()"><div class="dseg-n">${DL[i]}</div></div>`;
+        h += `</div><div class="ddesc" id="ddesc">Hover over an option to preview</div><div class="dconf" id="dconf"><button class="btn" onclick="confirm_()">Confirm</button></div></div>`;
+        h += `<div class="narr" id="narr" style="display:none"></div>`;
+        h += `<div class="tpf" id="tpf" style="display:none"></div>`;
+        h += `<div class="ps" id="ps" style="display:none"></div>`;
+        h += `<div class="cnav" id="cnav" style="display:none"><button class="btn" onclick="advance()">Continue</button></div>`;
+      }
+      m.innerHTML = h;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (crisis) setTimeout(() => playCrisis(), 600);
+    }
 
-function tipHTML(l){
-  const fb=R[rnd].fb[l];
-  const spd=fb.r==='EXCELLENT'||fb.r==='FAST'?'var(--gn)':fb.r==='MODERATE'?'var(--ac)':'var(--rd)';
-  const tpD=SC[l][0];
-  const ccD=SC[l][2];
-  const ccCol=ccD>0?'var(--gn)':'var(--rd)';
-  const ccArr=ccD>0?'\u25B2 +'+ccD:'\u25BC '+ccD;
-  return `<span style="color:var(--ac)">${DL[l]}</span> \u2014 ${DD[l]}<br><span style="font-size:.75rem;font-weight:600;color:${spd}">\u23F1 ${fb.t} \u00B7 ${fb.r}</span><br><span style="font-size:.72rem;font-weight:600;color:var(--dm)">Output <span style="color:var(--gn)">\u25B2 +${tpD}</span> &middot; Approval <span style="color:${ccCol}">${ccArr}</span></span>`;
-}
-function peek(l){if(locked)return;document.getElementById('ddesc').innerHTML=tipHTML(l)}
-function unpeek(){
-  if(locked)return;
-  document.getElementById('ddesc').innerHTML=dial>=0?tipHTML(dial):'Hover over an option to preview';
-}
-function pick(l){
-  if(locked)return;dial=l;
-  document.querySelectorAll('.dseg').forEach((s,i)=>{s.className='dseg';if(i===l)s.classList.add('on')});
-  document.getElementById('ddesc').innerHTML=tipHTML(l);
-  document.getElementById('dconf').style.display='block';
-}
-function confirm_(){
-  if(dial<0||locked)return;locked=true;
-  document.querySelectorAll('.dseg').forEach(s=>s.style.pointerEvents='none');
-  document.getElementById('dconf').style.display='none';
-  // Score
-  const[tG,rC,cC]=SC[dial];
-  tp=Math.min(100,tp+tG);
-  rd=Math.max(0,Math.min(100,rd+rC));
-  cc=Math.max(0,Math.min(100,cc+cC));
-  rdHist.push(rd);ccHist.push(cc);choices.push(dial);
-  // Animate bars
-  updCC();updTP();
-  // Show narrative
-  const s=R[rnd];const n=document.getElementById('narr');
-  n.style.display='block';n.innerHTML=s.narr[dial];
-  setTimeout(()=>n.classList.add('vis'),50);
-  // Show throughput feedback after narrative
-  setTimeout(()=>{
-    const f=document.getElementById('tpf');const fb=s.fb[dial];
-    let bh='';for(let i=0;i<4;i++)bh+=`<div class="tpf-bar${i<fb.b?' on':''}"></div>`;
-    f.innerHTML=`<div class="tpf-top"><span class="tpf-lbl">Throughput</span><div class="tpf-bars">${bh}</div><span class="tpf-rating">${fb.r} (${fb.t})</span></div><div class="tpf-praise">${fb.p}</div>`;
-    f.style.display='block';setTimeout(()=>f.classList.add('vis'),50);
-  },1200);
-  // Show postscript
-  setTimeout(()=>{
-    const p=document.getElementById('ps');p.textContent=s.ps;p.style.display='block';setTimeout(()=>p.classList.add('vis'),50);
-  },2200);
-  // Show continue
-  setTimeout(()=>{
-    const c=document.getElementById('cnav');c.style.display='block';setTimeout(()=>c.classList.add('vis'),50);
-    c.scrollIntoView({behavior:'smooth',block:'nearest'});
-  },3000);
-}
+    function tipHTML(l) {
+      const fb = R[rnd].fb[l];
+      const spd = fb.r === 'EXCELLENT' || fb.r === 'FAST' ? 'var(--gn)' : fb.r === 'MODERATE' ? 'var(--ac)' : 'var(--rd)';
+      const tpD = SC[l][0];
+      const ccD = SC[l][2];
+      const ccCol = ccD > 0 ? 'var(--gn)' : 'var(--rd)';
+      const ccArr = ccD > 0 ? '\u25B2 +' + ccD : '\u25BC ' + ccD;
+      return `<span style="color:var(--ac)">${DL[l]}</span> \u2014 ${DD[l]}<br><span style="font-size:.75rem;font-weight:600;color:${spd}">\u23F1 ${fb.t} \u00B7 ${fb.r}</span><br><span style="font-size:.72rem;font-weight:600;color:var(--dm)">Output <span style="color:var(--gn)">\u25B2 +${tpD}</span> &middot; Approval <span style="color:${ccCol}">${ccArr}</span></span>`;
+    }
+    function peek(l) { if (locked) return; document.getElementById('ddesc').innerHTML = tipHTML(l) }
+    function unpeek() {
+      if (locked) return;
+      document.getElementById('ddesc').innerHTML = dial >= 0 ? tipHTML(dial) : 'Hover over an option to preview';
+    }
+    function pick(l) {
+      if (locked) return; dial = l;
+      document.querySelectorAll('.dseg').forEach((s, i) => { s.className = 'dseg'; if (i === l) s.classList.add('on') });
+      document.getElementById('ddesc').innerHTML = tipHTML(l);
+      document.getElementById('dconf').style.display = 'block';
+    }
+    function confirm_() {
+      if (dial < 0 || locked) return; locked = true;
+      document.querySelectorAll('.dseg').forEach(s => s.style.pointerEvents = 'none');
+      document.getElementById('dconf').style.display = 'none';
+      // Score
+      const [tG, rC, cC] = SC[dial];
+      tp = Math.min(100, tp + tG);
+      rd = Math.max(0, Math.min(100, rd + rC));
+      cc = Math.max(0, Math.min(100, cc + cC));
+      rdHist.push(rd); ccHist.push(cc); choices.push(dial);
+      // Animate bars
+      updCC(); updTP();
+      // Show narrative
+      const s = R[rnd]; const n = document.getElementById('narr');
+      n.style.display = 'block'; n.innerHTML = s.narr[dial];
+      setTimeout(() => n.classList.add('vis'), 50);
+      // Show throughput feedback after narrative
+      setTimeout(() => {
+        const f = document.getElementById('tpf'); const fb = s.fb[dial];
+        let bh = ''; for (let i = 0; i < 4; i++)bh += `<div class="tpf-bar${i < fb.b ? ' on' : ''}"></div>`;
+        f.innerHTML = `<div class="tpf-top"><span class="tpf-lbl">Throughput</span><div class="tpf-bars">${bh}</div><span class="tpf-rating">${fb.r} (${fb.t})</span></div><div class="tpf-praise">${fb.p}</div>`;
+        f.style.display = 'block'; setTimeout(() => f.classList.add('vis'), 50);
+      }, 1200);
+      // Show postscript
+      setTimeout(() => {
+        const p = document.getElementById('ps'); p.textContent = s.ps; p.style.display = 'block'; setTimeout(() => p.classList.add('vis'), 50);
+      }, 2200);
+      // Show continue
+      setTimeout(() => {
+        const c = document.getElementById('cnav'); c.style.display = 'block'; setTimeout(() => c.classList.add('vis'), 50);
+        c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 3000);
+    }
 
-function playCrisis(){
-  rdHist.push(rd);ccHist.push(cc);choices.push(-1);
-  const tier=rd>=70?3:rd>=45?2:rd>=20?1:0;
-  const n=document.getElementById('narr');
-  n.innerHTML=R[4].crisisNarr[tier];
-  setTimeout(()=>n.classList.add('vis'),100);
-  setTimeout(()=>{const c=document.getElementById('cnav');c.style.display='block';setTimeout(()=>c.classList.add('vis'),50);c.scrollIntoView({behavior:'smooth',block:'nearest'})},2500);
-}
+    function playCrisis() {
+      rdHist.push(rd); ccHist.push(cc); choices.push(-1);
+      const tier = rd >= 70 ? 3 : rd >= 45 ? 2 : rd >= 20 ? 1 : 0;
+      const n = document.getElementById('narr');
+      n.innerHTML = R[4].crisisNarr[tier];
+      setTimeout(() => n.classList.add('vis'), 100);
+      setTimeout(() => { const c = document.getElementById('cnav'); c.style.display = 'block'; setTimeout(() => c.classList.add('vis'), 50); c.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) }, 2500);
+    }
 
-function advance(){showTrans(rnd+1)}
+    function advance() { showTrans(rnd + 1) }
 
-function showResults(){
-  let grade,gsub,gcol;
-  if(rd>=70){grade="Operator Ready";gsub="You maintained decision dominance when systems failed.";gcol="var(--gn)"}
-  else if(rd>=45){grade="Cognitively Strained";gsub="Your skills were rusty, but still functional under pressure.";gcol="var(--ac)"}
-  else if(rd>=20){grade="Partially Degraded";gsub="Your reliance on AI left gaps when the system went down.";gcol="var(--rd)"}
-  else{grade="System Dependent";gsub="Your dependence on AI became a tactical liability.";gcol="var(--rd)"}
+    function showResults() {
+      let grade, gsub, gcol;
+      if (rd >= 70) { grade = "Operator Ready"; gsub = "You maintained decision dominance when systems failed."; gcol = "var(--gn)" }
+      else if (rd >= 45) { grade = "Cognitively Strained"; gsub = "Your skills were rusty, but still functional under pressure."; gcol = "var(--ac)" }
+      else if (rd >= 20) { grade = "Partially Degraded"; gsub = "Your reliance on AI left gaps when the system went down."; gcol = "var(--rd)" }
+      else { grade = "System Dependent"; gsub = "Your dependence on AI became a tactical liability."; gcol = "var(--rd)" }
 
-  document.getElementById('gv').textContent=grade;
-  document.getElementById('gv').style.color=gcol;
-  document.getElementById('gsub').textContent=gsub;
-  document.getElementById('ftp').textContent=tp;
-  let tps;
-  if(tp>=80) tps="Your section was among the most productive in the theater. Intelligence reached the force ahead of schedule.";
-  else if(tp>=50) tps="Solid output. Intelligence reached the force on schedule most of the time.";
-  else if(tp>=30) tps="Below-average output. Time-sensitive requests were frequently delayed.";
-  else tps="Your section\u2019s output was critically slow. The force operated with delayed intelligence throughout the deployment.";
-  document.getElementById('tpsub').textContent=tps;
-  document.getElementById('fcc').textContent=cc;
-  document.getElementById('frd').textContent=rd;
-  const frdEl=document.getElementById('frd');
-  frdEl.className='sc-num rd'+(rd<45?' low':'');
+      document.getElementById('gv').textContent = grade;
+      document.getElementById('gv').style.color = gcol;
+      document.getElementById('gsub').textContent = gsub;
+      document.getElementById('ftp').textContent = tp;
+      let tps;
+      if (tp >= 80) tps = "Your section was among the most productive in the theater. Intelligence reached the force ahead of schedule.";
+      else if (tp >= 50) tps = "Solid output. Intelligence reached the force on schedule most of the time.";
+      else if (tp >= 30) tps = "Below-average output. Time-sensitive requests were frequently delayed.";
+      else tps = "Your section\u2019s output was critically slow. The force operated with delayed intelligence throughout the deployment.";
+      document.getElementById('tpsub').textContent = tps;
+      document.getElementById('fcc').textContent = cc;
+      document.getElementById('frd').textContent = rd;
+      const frdEl = document.getElementById('frd');
+      frdEl.className = 'sc-num rd' + (rd < 45 ? ' low' : '');
 
-  // CC subtitle
-  let ccs;
-  if(cc>=80) ccs="The Commander saw you as his most reliable analyst. Your section set the standard.";
-  else if(cc>=60) ccs="Solid performer. The Commander trusted your section\u2019s output.";
-  else if(cc>=40) ccs="Adequate but unimpressive. Other sections outpaced you.";
-  else ccs="The Commander was actively concerned about your section\u2019s pace and missed deadlines.";
-  document.getElementById('ccsub').textContent=ccs;
+      // CC subtitle
+      let ccs;
+      if (cc >= 80) ccs = "The Commander saw you as his most reliable analyst. Your section set the standard.";
+      else if (cc >= 60) ccs = "Solid performer. The Commander trusted your section\u2019s output.";
+      else if (cc >= 40) ccs = "Adequate but unimpressive. Other sections outpaced you.";
+      else ccs = "The Commander was actively concerned about your section\u2019s pace and missed deadlines.";
+      document.getElementById('ccsub').textContent = ccs;
 
-  // Readiness graph
-  const rg=document.getElementById('rg');const h3=rg.querySelector('h3');rg.innerHTML='';rg.appendChild(h3);
-  const rn=['Start','Mo 1','Mo 3','Mo 5','Mo 7','Mo 8'];
-  rdHist.forEach((v,i)=>{
-    const row=document.createElement('div');row.className='rgr';
-    row.innerHTML=`<span class="rgrl">${rn[i]||''}</span><div class="rgrt"><div class="rgrf${v<40?' low':v<60?' mid':''}" id="rgf${i}" style="width:0"></div></div><span class="rgrv">${v}</span>`;
-    rg.appendChild(row);
-  });
+      // Readiness graph
+      const rg = document.getElementById('rg'); const h3 = rg.querySelector('h3'); rg.innerHTML = ''; rg.appendChild(h3);
+      const rn = ['Start', 'Mo 1', 'Mo 3', 'Mo 5', 'Mo 7', 'Mo 8'];
+      rdHist.forEach((v, i) => {
+        const row = document.createElement('div'); row.className = 'rgr';
+        row.innerHTML = `<span class="rgrl">${rn[i] || ''}</span><div class="rgrt"><div class="rgrf${v < 40 ? ' low' : v < 60 ? ' mid' : ''}" id="rgf${i}" style="width:0"></div></div><span class="rgrv">${v}</span>`;
+        rg.appendChild(row);
+      });
 
-  // Timeline
-  const tla=document.getElementById('tla');const tlh=tla.querySelector('h3');tla.innerHTML='';tla.appendChild(tlh);
-  const sn=['Mo 1: Ships','Mo 3: Comms','Mo 5: Planning','Mo 7: Threat','Mo 8: CRISIS'];
-  choices.forEach((c,i)=>{
-    const row=document.createElement('div');row.className='tlr'+(i===4?' cri':'');
-    let sg='';for(let j=0;j<4;j++){let cl='tlrseg';if(c===-1){if(j===0)cl+=' on'}else if(j<=c)cl+=' on';sg+=`<div class="${cl}"></div>`}
-    row.innerHTML=`<span class="tlrn">${i+1}</span><div class="tlrs">${sg}</div><span class="tlrt">${sn[i]} \u2014 ${c===-1?'AI OFFLINE':DL[c]}</span>`;
-    tla.appendChild(row);
-  });
+      // Timeline
+      const tla = document.getElementById('tla'); const tlh = tla.querySelector('h3'); tla.innerHTML = ''; tla.appendChild(tlh);
+      const sn = ['Mo 1: Ships', 'Mo 3: Comms', 'Mo 5: Planning', 'Mo 7: Threat', 'Mo 8: CRISIS'];
+      choices.forEach((c, i) => {
+        const row = document.createElement('div'); row.className = 'tlr' + (i === 4 ? ' cri' : '');
+        let sg = ''; for (let j = 0; j < 4; j++) { let cl = 'tlrseg'; if (c === -1) { if (j === 0) cl += ' on' } else if (j <= c) cl += ' on'; sg += `<div class="${cl}"></div>` }
+        row.innerHTML = `<span class="tlrn">${i + 1}</span><div class="tlrs">${sg}</div><span class="tlrt">${sn[i]} \u2014 ${c === -1 ? 'AI OFFLINE' : DL[c]}</span>`;
+        tla.appendChild(row);
+      });
 
-  // Crisis outcome
-  const cop=document.getElementById('cop');let ct,cb,cbg;
-  if(rd>=70){ct="When ARTEMIS went down in Month 8, your months of hands-on analysis paid off. You recognized the adversary\u2019s deception and protected friendly forces. Your advantage wasn\u2019t ARTEMIS \u2014 it was that you stayed sharp enough to fight without it.";cb="var(--gn)";cbg="var(--gng)"}
-  else if(rd>=45){ct="When ARTEMIS went down in Month 8, your analytical skills were strained but functional. You identified the threat correctly, but it took longer than it should have. The rust showed \u2014 but it didn\u2019t break you. A closer call than it needed to be.";cb="var(--ac)";cbg="var(--acg)"}
-  else if(rd>=20){ct="When ARTEMIS went down in Month 8, your degraded analytical skills led to an indecisive response. You couldn\u2019t distinguish the diversion from the real threat. Forces were spread thin, and some units were caught repositioning. The AI made you fast \u2014 until it couldn\u2019t.";cb="var(--rd)";cbg="var(--rdg)"}
-  else{ct="When ARTEMIS went down in Month 8, eight months of cognitive atrophy became a tactical crisis. You couldn\u2019t process the raw data at all. The throughput and the Commander\u2019s praise were real \u2014 until the system those gains depended on was taken away. You won every battle for eight months, but the adversary was fighting a different war: cognitive attrition.";cb="var(--rd)";cbg="var(--rdg)"}
-  cop.style.borderLeft=`3px solid ${cb}`;cop.style.background=cbg;cop.innerHTML=`<p>${ct}</p>`;
+      // Crisis outcome
+      const cop = document.getElementById('cop'); let ct, cb, cbg;
+      if (rd >= 70) { ct = "When ARTEMIS went down in Month 8, your months of hands-on analysis paid off. You recognized the adversary\u2019s deception and protected friendly forces. Your advantage wasn\u2019t ARTEMIS \u2014 it was that you stayed sharp enough to fight without it."; cb = "var(--gn)"; cbg = "var(--gng)" }
+      else if (rd >= 45) { ct = "When ARTEMIS went down in Month 8, your analytical skills were strained but functional. You identified the threat correctly, but it took longer than it should have. The rust showed \u2014 but it didn\u2019t break you. A closer call than it needed to be."; cb = "var(--ac)"; cbg = "var(--acg)" }
+      else if (rd >= 20) { ct = "When ARTEMIS went down in Month 8, your degraded analytical skills led to an indecisive response. You couldn\u2019t distinguish the diversion from the real threat. Forces were spread thin, and some units were caught repositioning. The AI made you fast \u2014 until it couldn\u2019t."; cb = "var(--rd)"; cbg = "var(--rdg)" }
+      else { ct = "When ARTEMIS went down in Month 8, eight months of cognitive atrophy became a tactical crisis. You couldn\u2019t process the raw data at all. The throughput and the Commander\u2019s praise were real \u2014 until the system those gains depended on was taken away. You won every battle for eight months, but the adversary was fighting a different war: cognitive attrition."; cb = "var(--rd)"; cbg = "var(--rdg)" }
+      cop.style.borderLeft = `3px solid ${cb}`; cop.style.background = cbg; cop.innerHTML = `<p>${ct}</p>`;
 
-  // Insight
-  const ib=document.getElementById('insbox');
-  let ins='';
-  if(rd>=70){
-    ins+='<p>You stayed cognitively sharp \u2014 and it paid off in the crisis. But look at your Mission Output. In a real deployment, slow intelligence costs lives just as surely as wrong intelligence. Avoiding AI doesn\u2019t create enduring advantage \u2014 it creates a different vulnerability: the inability to keep pace with the threat.</p>';
-    ins+='<div class="pq">Operational speed saves lives today. Cognitive fitness saves them tomorrow. The right architecture delivers both.</div>';
-  } else if(rd>=45){
-    ins+='<p>You found a middle ground \u2014 productive enough to matter, sharp enough to survive the crisis. But you shouldn\u2019t have to choose between speed and readiness. The right AI architecture delivers both \u2014 not as a tradeoff, but as a design requirement.</p>';
-    ins+='<div class="pq">Short-term productivity without long-term cognitive fitness is winning the battle and losing the war.</div>';
-  } else {
-    ins+='<p>Your section was among the most productive in the theater. The Commander valued your output. But when ARTEMIS went offline, the skills you stopped practicing became the skills you needed most. The AI made you effective \u2014 until the adversary took it away.</p>';
-    ins+='<div class="pq">Short-term productivity without long-term cognitive fitness is winning the battle and losing the war.</div>';
-  }
-  ins+='<p>The answer isn\u2019t less AI \u2014 the operational demands are real and people\u2019s lives depend on fast intelligence. The answer is <strong>smarter AI.</strong> Systems with adjustable autonomy that operators control, designed to maintain cognitive fitness even while delivering speed, engineered for fallback readiness that assumes technology will eventually fail. AI that augments human capability rather than quietly replacing it.</p>';
-  ib.innerHTML=ins;
+      // Insight
+      const ib = document.getElementById('insbox');
+      let ins = '';
+      if (rd >= 70) {
+        ins += '<p>You stayed cognitively sharp \u2014 and it paid off in the crisis. But look at your Mission Output. In a real deployment, slow intelligence costs lives just as surely as wrong intelligence. Avoiding AI doesn\u2019t create enduring advantage \u2014 it creates a different vulnerability: the inability to keep pace with the threat.</p>';
+        ins += '<div class="pq">Operational speed saves lives today. Cognitive fitness saves them tomorrow. The right architecture delivers both.</div>';
+      } else if (rd >= 45) {
+        ins += '<p>You found a middle ground \u2014 productive enough to matter, sharp enough to survive the crisis. But you shouldn\u2019t have to choose between speed and readiness. The right AI architecture delivers both \u2014 not as a tradeoff, but as a design requirement.</p>';
+        ins += '<div class="pq">Short-term productivity without long-term cognitive fitness is winning the battle and losing the war.</div>';
+      } else {
+        ins += '<p>Your section was among the most productive in the theater. The Commander valued your output. But when ARTEMIS went offline, the skills you stopped practicing became the skills you needed most. The AI made you effective \u2014 until the adversary took it away.</p>';
+        ins += '<div class="pq">Short-term productivity without long-term cognitive fitness is winning the battle and losing the war.</div>';
+      }
+      ins += '<p>The answer isn\u2019t less AI \u2014 the operational demands are real and people\u2019s lives depend on fast intelligence. The answer is <strong>smarter AI.</strong> Systems with adjustable autonomy that operators control, designed to maintain cognitive fitness even while delivering speed, engineered for fallback readiness that assumes technology will eventually fail. AI that augments human capability rather than quietly replacing it.</p>';
+      ib.innerHTML = ins;
 
-  go('res');
-  const ids=['r0','r1','r2','r3','r4','r5','r6','r7','r8'];
-  const dly=[600,1800,3000,4200,5200,6800,8000,9200,10400];
-  ids.forEach((id,i)=>{
-    setTimeout(()=>{
-      document.getElementById(id).classList.add('sh');
-      if(id==='r4'){rdHist.forEach((v,j)=>{setTimeout(()=>{const f=document.getElementById('rgf'+j);if(f)f.style.width=v+'%'},j*200)})}
-    },dly[i]);
-  });
-}
+      go('res');
+      const ids = ['r0', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8'];
+      const dly = [600, 1800, 3000, 4200, 5200, 6800, 8000, 9200, 10400];
+      ids.forEach((id, i) => {
+        setTimeout(() => {
+          document.getElementById(id).classList.add('sh');
+          if (id === 'r4') { rdHist.forEach((v, j) => { setTimeout(() => { const f = document.getElementById('rgf' + j); if (f) f.style.width = v + '%' }, j * 200) }) }
+        }, dly[i]);
+      });
+    }
 
-function replay(){
-  rnd=0;tp=0;rd=100;cc=50;choices=[];rdHist=[100];ccHist=[50];locked=false;dial=-1;
-  document.querySelectorAll('.rv').forEach(r=>r.classList.remove('sh'));
-  go('title');
-}
+    function replay() {
+      rnd = 0; tp = 0; rd = 100; cc = 50; choices = []; rdHist = [100]; ccHist = [50]; locked = false; dial = -1;
+      document.querySelectorAll('.rv').forEach(r => r.classList.remove('sh'));
+      go('title');
+    }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const t=document.getElementById('title');t.classList.add('on');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('vis')));
-});
-</script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const t = document.getElementById('title'); t.classList.add('on');
+      requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('vis')));
+    });
+  </script>
 </body>
+
 </html>
